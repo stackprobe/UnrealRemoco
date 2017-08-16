@@ -7,12 +7,6 @@ UnrealRemoco
 ビルド済み配布物
 ----------------
 
-以下の場所からダウンロードできます。
-
-Vector
-http://www.vector.co.jp/soft/winnt/net/se515835.html
-
-うちのサイト
 http://stackprobe.dip.jp/UnrealRemoco
 
 
