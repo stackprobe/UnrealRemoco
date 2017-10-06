@@ -70,7 +70,7 @@ namespace Charlotte
 			procMutex.Close();
 		}
 
-		public const string APP_IDENT = "{30fdc31f-0583-4da2-a56f-bef0249ec712}";
+		public const string APP_IDENT = "{88200687-cc65-492d-a0b8-7328daca8d2b}";
 		public const string APP_TITLE = "UnrealServer";
 
 		private static void applicationThreadException(object sender, ThreadExceptionEventArgs e)
