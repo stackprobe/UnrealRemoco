@@ -27,7 +27,7 @@ namespace Charlotte
 
 			Mutex procMutex = new Mutex(false, APP_IDENT);
 
-			if (procMutex.WaitOne(0) && GlobalProcMtx.create(Consts.PROJECT_GUI_IDENT, APP_TITLE))
+			if (procMutex.WaitOne(0) && GlobalProcMtx.Create(Consts.PROJECT_GUI_IDENT, APP_TITLE))
 			{
 				checkSelfDir();
 				Directory.SetCurrentDirectory(selfDir);
@@ -69,7 +69,7 @@ namespace Charlotte
 
 				FileTools.clearTMP();
 
-				GlobalProcMtx.release();
+				GlobalProcMtx.Release();
 				procMutex.ReleaseMutex();
 			}
 			procMutex.Close();
