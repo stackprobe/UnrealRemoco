@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Drawing.Imaging;
@@ -119,6 +120,56 @@ namespace Charlotte
 					throw null;
 			}
 			return p;
+		}
+
+		public static void antiWindowsDefenderSmartScreen()
+		{
+			WriteLog("awdss_1");
+
+			if (Gnd.i.is初回起動())
+			{
+				WriteLog("awdss_2");
+
+				foreach (string exeFile in Directory.GetFiles(Program.selfDir, "*.exe", SearchOption.AllDirectories))
+				{
+					try
+					{
+						WriteLog("awdss_exeFile: " + exeFile);
+
+						if (StringTools.equalsIgnoreCase(exeFile, Program.selfFile))
+						{
+							WriteLog("awdss_self_noop");
+						}
+						else
+						{
+							byte[] exeData = File.ReadAllBytes(exeFile);
+							File.Delete(exeFile);
+							File.WriteAllBytes(exeFile, exeData);
+						}
+						WriteLog("awdss_OK");
+					}
+					catch (Exception e)
+					{
+						WriteLog(e);
+					}
+				}
+				WriteLog("awdss_3");
+			}
+			WriteLog("awdss_4");
+		}
+
+		private static StreamWriter LogWriter = null;
+
+		public static void WriteLog(object message)
+		{
+			if (LogWriter == null)
+			{
+				string logFile = Path.Combine(Program.selfDir, Path.GetFileNameWithoutExtension(Program.selfFile) + ".log");
+
+				LogWriter = new StreamWriter(logFile, false, Encoding.UTF8);
+			}
+			LogWriter.WriteLine("[" + DateTime.Now + "] " + message);
+			LogWriter.Flush();
 		}
 	}
 }

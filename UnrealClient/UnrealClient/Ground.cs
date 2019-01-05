@@ -278,5 +278,10 @@ namespace Charlotte
 			file = FileTools.makeFullPath(file);
 			return file;
 		}
+
+		public bool is初回起動()
+		{
+			return File.Exists(getDataFile()) == false; // ? saveData()を1度も実行していない。
+		}
 	}
 }

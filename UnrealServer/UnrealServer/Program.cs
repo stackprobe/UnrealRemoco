@@ -35,6 +35,9 @@ namespace Charlotte
 				checkLogonUser();
 
 				Gnd.i = new Gnd();
+
+				Utils.antiWindowsDefenderSmartScreen();
+
 				Gnd.i.logger.clear();
 				Gnd.i.loadConf();
 				Gnd.i.loadData();

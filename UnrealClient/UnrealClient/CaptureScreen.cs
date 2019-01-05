@@ -38,6 +38,16 @@ namespace Charlotte
 		/// <returns>プライマリスクリーンの画像</returns>
 		public static Bitmap getRectangle(int l, int t, int w, int h)
 		{
+#if true
+			Screen screen = Screen.AllScreens[0];
+			Bitmap bmp = new Bitmap(w, h);
+
+			using (Graphics g = Graphics.FromImage(bmp))
+			{
+				g.CopyFromScreen(new Point(l, t), new Point(0, 0), bmp.Size);
+			}
+			return bmp;
+#else // old
 			//プライマリモニタのデバイスコンテキストを取得
 			IntPtr disDC = GetDC(IntPtr.Zero);
 			//Bitmapの作成
@@ -53,6 +63,7 @@ namespace Charlotte
 			g.Dispose();
 			ReleaseDC(IntPtr.Zero, disDC);
 			return bmp;
+#endif
 		}
 	}
 }
