@@ -64,6 +64,8 @@ namespace Charlotte
 
 			Utils.adjustColumnsWidth(siSheet);
 			siSheet.ClearSelection();
+
+			Utils.PostShown(this);
 		}
 
 		private void ConnectDlg_FormClosing(object sender, FormClosingEventArgs e)

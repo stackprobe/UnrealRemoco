@@ -30,7 +30,7 @@ namespace Charlotte
 
 		private void SettingDlg_Shown(object sender, EventArgs e)
 		{
-			// noop
+			Utils.PostShown(this);
 		}
 
 		private void SettingDlg_FormClosing(object sender, FormClosingEventArgs e)

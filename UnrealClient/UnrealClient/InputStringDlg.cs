@@ -27,7 +27,7 @@ namespace Charlotte
 
 		private void InputStringDlg_Shown(object sender, EventArgs e)
 		{
-			// noop
+			Utils.PostShown(this);
 		}
 
 		private void InputStringDlg_FormClosing(object sender, FormClosingEventArgs e)

@@ -42,6 +42,8 @@ namespace Charlotte
 		private void KeyDataDlg_Shown(object sender, EventArgs e)
 		{
 			this.btnOk.Focus();
+
+			Utils.PostShown(this);
 		}
 
 		private void KeyDataDlg_FormClosing(object sender, FormClosingEventArgs e)
