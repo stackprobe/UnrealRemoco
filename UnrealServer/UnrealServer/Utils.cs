@@ -91,6 +91,8 @@ namespace Charlotte
 			return p;
 		}
 
+		// sync > @ AntiWindowsDefenderSmartScreen
+
 		public static void antiWindowsDefenderSmartScreen()
 		{
 			WriteLog("awdss_1");
@@ -127,6 +129,8 @@ namespace Charlotte
 			WriteLog("awdss_4");
 		}
 
+		// < sync
+
 		private static StreamWriter LogWriter = null;
 
 		public static void WriteLog(object message)
@@ -140,6 +144,8 @@ namespace Charlotte
 			LogWriter.WriteLine("[" + DateTime.Now + "] " + message);
 			LogWriter.Flush();
 		}
+
+		// sync > @ PostShown
 
 		public static void PostShown(Form f)
 		{
@@ -178,5 +184,7 @@ namespace Charlotte
 				}
 			}
 		}
+
+		// < sync
 	}
 }
