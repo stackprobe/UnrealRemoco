@@ -131,64 +131,38 @@ namespace Charlotte
 		{
 			try
 			{
-				//OpenFileDialogクラスのインスタンスを作成
-				using (OpenFileDialog ofd = new OpenFileDialog())
+				string keyFile = SaveLoadDialogs.LoadFile(
+					"鍵ファイルを選択してください",
+					"鍵:unreal-remo-key",
+					Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+					"default.unreal-remo-key"
+					);
+
+				if (keyFile != null)
 				{
-					//はじめのファイル名を指定する
-					//はじめに「ファイル名」で表示される文字列を指定する
-					ofd.FileName = "default.unreal-remo-key";
-					//はじめに表示されるフォルダを指定する
-					//指定しない（空の文字列）の時は、現在のディレクトリが表示される
-					//ofd.InitialDirectory = @"C:\";
-					ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-					//[ファイルの種類]に表示される選択肢を指定する
-					//指定しないとすべてのファイルが表示される
-					ofd.Filter = "鍵ファイル(*.unreal-remo-key)|*.unreal-remo-key|すべてのファイル(*.*)|*.*";
-					//[ファイルの種類]ではじめに選択されるものを指定する
-					//2番目の「すべてのファイル」が選択されているようにする
-					ofd.FilterIndex = 1;
-					//タイトルを設定する
-					ofd.Title = "鍵ファイルを選択してください";
-					//ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
-					ofd.RestoreDirectory = true;
-					//存在しないファイルの名前が指定されたとき警告を表示する
-					//デフォルトでTrueなので指定する必要はない
-					ofd.CheckFileExists = true;
-					//存在しないパスが指定されたとき警告を表示する
-					//デフォルトでTrueなので指定する必要はない
-					ofd.CheckPathExists = true;
+					XNode root = XNode.load(keyFile);
 
-					//ダイアログを表示する
-					if (ofd.ShowDialog() == DialogResult.OK)
-					{
-						//OKボタンがクリックされたとき、選択されたファイル名を表示する
-						//Console.WriteLine(ofd.FileName);
+					string ident = root.get("Ident").value;
+					string key = root.get("Key").value;
+					string hash = root.get("Hash").value;
 
-						string keyFile = ofd.FileName;
-						XNode root = XNode.load(keyFile);
+					if (ident != JString.toJString(ident, false, false, false, false))
+						throw new FailedOperation("鍵ファイルが壊れています。(Ident format)");
 
-						string ident = root.get("Ident").value;
-						string key = root.get("Key").value;
-						string hash = root.get("Hash").value;
+					if (ident.Length < 1 || 100 < ident.Length) // XXX 上限適当
+						throw new FailedOperation("鍵ファイルが壊れています。(Ident length)");
 
-						if (ident != JString.toJString(ident, false, false, false, false))
-							throw new FailedOperation("鍵ファイルが壊れています。(Ident format)");
+					if (StringTools.hex(key).Length != 64)
+						throw new FailedOperation("鍵ファイルが壊れています。(Key length)");
 
-						if (ident.Length < 1 || 100 < ident.Length) // XXX 上限適当
-							throw new FailedOperation("鍵ファイルが壊れています。(Ident length)");
+					if (hash != Gnd.KeyData.getHash(key))
+						throw new FailedOperation("鍵ファイルが壊れています。(Hash)");
 
-						if (StringTools.hex(key).Length != 64)
-							throw new FailedOperation("鍵ファイルが壊れています。(Key length)");
+					txtIdent.Text = ident;
+					txtRaw.Text = key;
+					txtHash.Text = hash;
 
-						if (hash != Gnd.KeyData.getHash(key))
-							throw new FailedOperation("鍵ファイルが壊れています。(Hash)");
-
-						txtIdent.Text = ident;
-						txtRaw.Text = key;
-						txtHash.Text = hash;
-
-						throw new Completed("鍵をインポートしました。");
-					}
+					throw new Completed("鍵をインポートしました。");
 				}
 			}
 			catch (Exception ex)
@@ -204,48 +178,24 @@ namespace Charlotte
 				if (txtIdent.Text == "") // ? 未生成
 					throw new FailedOperation("鍵を生成して下さい。");
 
-				//SaveFileDialogクラスのインスタンスを作成
-				using (SaveFileDialog sfd = new SaveFileDialog())
+				string keyFile = SaveLoadDialogs.SaveFile(
+					"保存先の鍵ファイルを選択してください",
+					"鍵:unreal-remo-key",
+					Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+					this.txtIdent.Text + ".unreal-remo-key"
+					);
+
+				if (keyFile != null)
 				{
-					//はじめのファイル名を指定する
-					//はじめに「ファイル名」で表示される文字列を指定する
-					sfd.FileName = this.txtIdent.Text + ".unreal-remo-key";
-					//はじめに表示されるフォルダを指定する
-					sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-					//[ファイルの種類]に表示される選択肢を指定する
-					//指定しない（空の文字列）の時は、現在のディレクトリが表示される
-					sfd.Filter = "鍵ファイル(*.unreal-remo-key)|*.unreal-remo-key|すべてのファイル(*.*)|*.*";
-					//[ファイルの種類]ではじめに選択されるものを指定する
-					//2番目の「すべてのファイル」が選択されているようにする
-					sfd.FilterIndex = 1;
-					//タイトルを設定する
-					sfd.Title = "保存先の鍵ファイルを選択してください";
-					//ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
-					sfd.RestoreDirectory = true;
-					//既に存在するファイル名を指定したとき警告する
-					//デフォルトでTrueなので指定する必要はない
-					sfd.OverwritePrompt = true;
-					//存在しないパスが指定されたとき警告を表示する
-					//デフォルトでTrueなので指定する必要はない
-					sfd.CheckPathExists = true;
+					XNode root = new XNode("UnrealRemoco-Key");
 
-					//ダイアログを表示する
-					if (sfd.ShowDialog() == DialogResult.OK)
-					{
-						//OKボタンがクリックされたとき、選択されたファイル名を表示する
-						//Console.WriteLine(sfd.FileName);
+					root.children.Add(new XNode("Ident", this.txtIdent.Text));
+					root.children.Add(new XNode("Key", this.txtRaw.Text));
+					root.children.Add(new XNode("Hash", this.txtHash.Text));
 
-						string keyFile = sfd.FileName;
-						XNode root = new XNode("UnrealRemoco-Key");
+					root.save(keyFile);
 
-						root.children.Add(new XNode("Ident", this.txtIdent.Text));
-						root.children.Add(new XNode("Key", this.txtRaw.Text));
-						root.children.Add(new XNode("Hash", this.txtHash.Text));
-
-						root.save(keyFile);
-
-						throw new Completed("鍵ファイルに保存しました。");
-					}
+					throw new Completed("鍵ファイルに保存しました。");
 				}
 			}
 			catch (Exception ex)

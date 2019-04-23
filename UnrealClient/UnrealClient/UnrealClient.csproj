@@ -90,6 +90,7 @@
       <DependentUpon>KeyDataDlg.cs</DependentUpon>
     </Compile>
     <Compile Include="RecorderProc.cs" />
+    <Compile Include="SaveLoadDialogs.cs" />
     <Compile Include="SenderProc.cs" />
     <Compile Include="SettingDlg.cs">
       <SubType>Form</SubType>
