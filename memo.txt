@@ -1,26 +1,26 @@
 ----
 TODO
 
-cout�̃I���E�I�t�A�R���\�[���\���̃I���E�I�t done
+coutのオン・オフ、コンソール表示のオン・オフ done
 
 Readme.txt done
 
-�Í��̃e�X�g done
+暗号のテスト done
 
 - - -
 
-�}�E�X�J�[�\���̌`�� done
+マウスカーソルの形状 done
 
-Ctrl+Alt+Del, Shift�n�L�[, Windows, �����L�[�ȂǁA���삵�ɂ����L�[�̑��M
+Ctrl+Alt+Del, Shift系キー, Windows, 漢字キーなど、操作しにくいキーの送信
 
-�ʏ�L�[�̃z�[���h�ŘA�łɑΉ�
+通常キーのホールドで連打に対応
 
-����ш搧��
+下り帯域制限
 
-�T�[�o�[�E�N���C�A���g�A�ُ�ȒʐM�f�[�^�ɑ΂��đϐ������邩�H
+サーバー・クライアント、異常な通信データに対して耐性があるか？
 
-�T�[�o�[�ݒ���N���C�A���g����J����悤�ɂ������B-- �ʂɂ���Ȃ��Bpend
+サーバー設定をクライアントから開けるようにしたい。-- 別にいらない。pend
 
-�T�[�o�[���̉�ʂ����b�N���Ă���ԁA����ł��Ȃ��Ȃ�B
+サーバー側の画面をロックしている間、操作できなくなる。
 
-�T�[�o�[���ŕʂ̃��[�U�[�ɐ؂�ւ��Ă���ԁA����ł��Ȃ��Ȃ�B-- ����͂��傤���Ȃ��ł�����Bpend
+サーバー側で別のユーザーに切り替えている間、操作できなくなる。-- これはしょうがないでいいや。pend
