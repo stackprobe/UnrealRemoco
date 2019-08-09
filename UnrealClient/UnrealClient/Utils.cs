@@ -12,7 +12,7 @@ using Charlotte.Tools;
 
 namespace Charlotte
 {
-	public class Utils
+	public static class Utils
 	{
 		public static void enableDoubleBuffer(Control ctrl)
 		{

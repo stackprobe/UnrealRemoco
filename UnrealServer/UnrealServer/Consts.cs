@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Charlotte
 {
-	public class Consts
+	public static class Consts
 	{
 		public const string PROJECT_GUI_IDENT = "{62ec54fe-ec8e-4379-a2e8-6b6ab7715066}"; // shared_uuid:2 // UnrealClient と UnrealServer
 

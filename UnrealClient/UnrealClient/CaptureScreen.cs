@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Charlotte
 {
-	public class CaptureScreen
+	public static class CaptureScreen
 	{
 		private const int SRCCOPY = 13369376;
 		private const int CAPTUREBLT = 1073741824;
