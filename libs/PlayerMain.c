@@ -129,6 +129,8 @@ void PlayerMain(void)
 
 			// < items
 
+			errorCase_m(strcmp(refLine(lines, c++), "\\e"), "Bad conf");
+
 			releaseDim(lines, 1);
 		}
 		memFree(confFile);

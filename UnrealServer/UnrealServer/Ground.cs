@@ -47,6 +47,9 @@ namespace Charlotte
 
 				int c = 0;
 
+				if (int.Parse(lines[c++]) != lines.Count)
+					throw new Exception("Bad item count");
+
 				// items >
 
 				consoleWinStyle = (ProcessTools.WindowStyle_e)int.Parse(lines[c++]);
@@ -73,6 +76,12 @@ namespace Charlotte
 
 		public void loadData()
 		{
+			if (File.Exists(getDataFile()) == false)
+			{
+				Utils.WriteLog("no data file");
+				return;
+			}
+
 			try
 			{
 				string[] lines = File.ReadAllLines(getDataFile(), Encoding.UTF8);
@@ -95,8 +104,10 @@ namespace Charlotte
 
 				// < items
 			}
-			catch
-			{ }
+			catch (Exception e)
+			{
+				Utils.WriteLog(e);
+			}
 		}
 
 		public void saveData()
@@ -121,8 +132,10 @@ namespace Charlotte
 
 				File.WriteAllLines(getDataFile(), lines, Encoding.UTF8);
 			}
-			catch
-			{ }
+			catch (Exception e)
+			{
+				Utils.WriteLog(e);
+			}
 		}
 
 		private string getDataFile()
