@@ -34,6 +34,8 @@ namespace Charlotte
 		public ProcessTools.WindowStyle_e consoleWinStyle = ProcessTools.WindowStyle_e.INVISIBLE;
 		public string passphraseSuffix = "[x25]";
 		public bool disconnectAndShiftKeysUp = true;
+		public long clearLogCycle = 1000L;
+		public bool antiScreenSaver = false;
 
 		public void loadConf()
 		{
@@ -55,11 +57,15 @@ namespace Charlotte
 				consoleWinStyle = (ProcessTools.WindowStyle_e)int.Parse(lines[c++]);
 				passphraseSuffix = lines[c++];
 				disconnectAndShiftKeysUp = StringTools.toFlag(lines[c++]);
+				clearLogCycle = long.Parse(lines[c++]);
+				antiScreenSaver = StringTools.toFlag(lines[c++]);
 
 				// < items
 			}
-			catch
-			{ }
+			catch (Exception e)
+			{
+				Utils.WriteLog(e);
+			}
 		}
 
 		private string getConfFile()
@@ -91,13 +97,17 @@ namespace Charlotte
 
 				portNo = IntTools.toInt(lines[c++]);
 
-				if (lines[c] != "")
 				{
-					key = new KeyData();
-					FieldsSerializer.deserialize(key, StringTools.decodeLines(lines[c++]));
+					string line = lines[c++];
+
+					if (line != "")
+					{
+						key = new KeyData();
+						FieldsSerializer.deserialize(key, StringTools.decodeLines(line));
+					}
+					else
+						key = null;
 				}
-				else
-					key = null;
 
 				passphrase = lines[c++];
 				forwardPortNo = int.Parse(lines[c++]);
@@ -146,7 +156,7 @@ namespace Charlotte
 		// ----
 
 		public MonitorCenter monitorCenter = new MonitorCenter();
-		public Logger logger = new Logger();
+		//public Logger logger = new Logger();
 		public Service service = null; // null == 停止中
 
 		public class KeyData : FieldsSerializer.Serializable

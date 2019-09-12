@@ -38,6 +38,7 @@ namespace Charlotte
 		public int screen_w_max = 10000;
 		public int screen_h_max = 10000;
 		public int serverInfoCountMax = 255;
+		public long clearLogCycle = 1000L;
 
 		public void loadConf()
 		{
@@ -63,6 +64,7 @@ namespace Charlotte
 				screen_w_max = IntTools.toInt(lines[c++], screen_w_min);
 				screen_h_max = IntTools.toInt(lines[c++], screen_h_min);
 				serverInfoCountMax = IntTools.toInt(lines[c++], 1);
+				clearLogCycle = long.Parse(lines[c++]);
 
 				// < items
 			}
@@ -193,7 +195,7 @@ namespace Charlotte
 		// ----
 
 		public MonitorCenter monitorCenter = new MonitorCenter();
-		public Logger logger = new Logger();
+		//public Logger logger = new Logger();
 
 		public class ServerInfo
 		{

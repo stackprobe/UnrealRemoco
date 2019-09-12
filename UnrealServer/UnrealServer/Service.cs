@@ -89,7 +89,7 @@ namespace Charlotte
 					}
 					else
 					{
-						Gnd.i.logger.writeLine("不明なコマンド：" + command);
+						Utils.WriteLog("不明なコマンド：" + command);
 					}
 
 					// < 受信コマンド処理
@@ -97,7 +97,7 @@ namespace Charlotte
 			}
 			catch (Exception e)
 			{
-				Gnd.i.logger.writeLine("Service each-timer error: " + e);
+				Utils.WriteLog("Service each-timer error: " + e);
 				GC.Collect();
 			}
 		}

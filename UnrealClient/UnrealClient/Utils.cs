@@ -167,18 +167,16 @@ namespace Charlotte
 			return Gnd.i.is初回起動();
 		}
 
-		private static StreamWriter LogWriter = null;
+		private static long WriteLogCount = 0L;
 
 		public static void WriteLog(object message)
 		{
-			if (LogWriter == null)
-			{
-				string logFile = Path.Combine(Program.selfDir, Path.GetFileNameWithoutExtension(Program.selfFile) + ".log");
+			string logFile = Path.Combine(Program.selfDir, Path.GetFileNameWithoutExtension(Program.selfFile) + ".log");
 
-				LogWriter = new StreamWriter(logFile, false, Encoding.UTF8);
+			using (StreamWriter writer = new StreamWriter(logFile, WriteLogCount++ % Gnd.i.clearLogCycle != 0, Encoding.UTF8))
+			{
+				writer.WriteLine("[" + DateTime.Now + "] " + message);
 			}
-			LogWriter.WriteLine("[" + DateTime.Now + "] " + message);
-			LogWriter.Flush();
 		}
 
 		// sync > @ PostShown

@@ -106,7 +106,7 @@ namespace Charlotte
 				}
 				catch (Exception e)
 				{
-					Gnd.i.logger.writeLine("受信データが壊れています：" + e);
+					Utils.WriteLog("受信データが壊れています：" + e);
 				}
 				GC.Collect();
 			}

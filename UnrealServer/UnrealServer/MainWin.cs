@@ -99,6 +99,22 @@ namespace Charlotte
 			{
 				// 停止状態になることが無い！
 				Gnd.i.service.eachTimerTick();
+
+				if (Gnd.i.antiScreenSaver)
+				{
+					switch ((int)(this.mtCount % 100L))
+					{
+						case 0:
+							Utils.WriteLog("ES_SYSTEM_REQUIRED");
+							Win32.SetThreadExecutionState(Win32.ExecutionState.ES_SYSTEM_REQUIRED);
+							break;
+
+						case 1:
+							Utils.WriteLog("ES_DISPLAY_REQUIRED");
+							Win32.SetThreadExecutionState(Win32.ExecutionState.ES_DISPLAY_REQUIRED);
+							break;
+					}
+				}
 			}
 			finally
 			{

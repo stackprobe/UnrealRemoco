@@ -38,7 +38,7 @@ namespace Charlotte
 
 				Utils.AntiWindowsDefenderSmartScreen();
 
-				Gnd.i.logger.clear();
+				//Gnd.i.logger.clear();
 				Gnd.i.loadConf();
 				Gnd.i.loadData();
 
