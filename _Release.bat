@@ -2,8 +2,6 @@ C:\Factory\Tools\RDMD.exe /RC out
 C:\Factory\Tools\RDMD.exe /MD out\Client
 C:\Factory\Tools\RDMD.exe /MD out\Server
 
-rem TODO
-
 COPY /B UnrealPlayer.exe out\Client
 COPY /B UnrealPlayer.exe out\Server
 
@@ -32,4 +30,4 @@ RD out\Server
 
 C:\Factory\SubTools\zip.exe /O out UnrealRemoco
 
-PAUSE
+IF NOT "%1" == "/-P" PAUSE
