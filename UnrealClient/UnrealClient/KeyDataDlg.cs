@@ -149,7 +149,7 @@ namespace Charlotte
 					if (ident != JString.toJString(ident, false, false, false, false))
 						throw new FailedOperation("鍵ファイルが壊れています。(Ident format)");
 
-					if (ident.Length < 1 || 100 < ident.Length) // XXX 上限適当
+					if (ident.Length < 1 || 100 < ident.Length) // todo 上限適当
 						throw new FailedOperation("鍵ファイルが壊れています。(Ident length)");
 
 					if (StringTools.hex(key).Length != 64)

@@ -199,7 +199,7 @@ static int Perform(int sock, uint prm_dummy)
 					}
 					else // ? レコーダー行き
 					{
-						ol = LinesToOL(lines); // XXX ol -> lines -> ol
+						ol = LinesToOL(lines); // todo ol -> lines -> ol
 						Frtwv_SendOL(RecorderSender, ol, 1);
 						ReleaseOL(ol);
 					}

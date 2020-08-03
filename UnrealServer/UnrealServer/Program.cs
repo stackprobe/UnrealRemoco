@@ -54,7 +54,7 @@ namespace Charlotte
 					}
 					// crypTunnel -> CrypTunnelProc.cs
 
-					// XXX -- Recver, Player の停止を待っていない。
+					// todo -- Recver, Player の停止を待っていない。
 				}
 
 				// orig >
