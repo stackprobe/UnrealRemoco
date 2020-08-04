@@ -170,11 +170,11 @@ static void PerformTh(int sock, char *strip)
 			if(!ol)
 				break;
 
-			command = ab_toLine((autoBlock_t *)getElement(ol, c++)); // HACK 要素が無ければ error();
+			command = ab_toLine((autoBlock_t *)getElement(ol, c++)); // HACK: 要素が無ければ error();
 
 			if(!strcmp(command, "SEND-TO-CLIENT")) // ? クライアント方面へ
 			{
-				autoBlock_t *sendData = (autoBlock_t *)getElement(ol, c++); // HACK 要素が無ければ error();
+				autoBlock_t *sendData = (autoBlock_t *)getElement(ol, c++); // HACK: 要素が無ければ error();
 
 				if(SEND_DATA_SIZE_MAX < getSize(sendData))
 				{
