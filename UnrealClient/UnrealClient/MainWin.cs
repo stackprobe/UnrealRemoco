@@ -18,7 +18,7 @@ namespace Charlotte
 		{
 			InitializeComponent();
 
-			this.MinimumSize = new Size(300, 300);
+			this.MinimumSize = new Size(400, 300);
 			this.lblStatus.Text = "";
 
 			Utils.enableDoubleBuffer(this.pbScreen);
@@ -55,12 +55,12 @@ namespace Charlotte
 			}
 			*/
 
-			if (Gnd.i.mainWin_w == -1)
+			if (Ground.i.mainWin_w == -1)
 			{
-				Gnd.i.mainWin_l = Gnd.i.monitorCenter.get(0).l + 50;
-				Gnd.i.mainWin_t = Gnd.i.monitorCenter.get(0).t + 50;
-				Gnd.i.mainWin_w = Gnd.i.monitorCenter.get(0).w - 100;
-				Gnd.i.mainWin_h = Gnd.i.monitorCenter.get(0).h - 100;
+				Ground.i.mainWin_l = Ground.i.monitorCenter.get(0).l + 50;
+				Ground.i.mainWin_t = Ground.i.monitorCenter.get(0).t + 50;
+				Ground.i.mainWin_w = Ground.i.monitorCenter.get(0).w - 100;
+				Ground.i.mainWin_h = Ground.i.monitorCenter.get(0).h - 100;
 			}
 			loadLTWH();
 			disconnected();
@@ -69,13 +69,13 @@ namespace Charlotte
 
 		private void loadLTWH()
 		{
-			if (Gnd.i.mainWin_w == -1)
+			if (Ground.i.mainWin_w == -1)
 				return;
 
-			this.Left = Gnd.i.mainWin_l;
-			this.Top = Gnd.i.mainWin_t;
-			this.Width = Gnd.i.mainWin_w;
-			this.Height = Gnd.i.mainWin_h;
+			this.Left = Ground.i.mainWin_l;
+			this.Top = Ground.i.mainWin_t;
+			this.Width = Ground.i.mainWin_w;
+			this.Height = Ground.i.mainWin_h;
 		}
 
 		private void saveLTWH()
@@ -86,10 +86,10 @@ namespace Charlotte
 			if (this.WindowState != FormWindowState.Normal)
 				return;
 
-			Gnd.i.mainWin_l = this.Left;
-			Gnd.i.mainWin_t = this.Top;
-			Gnd.i.mainWin_w = this.Width;
-			Gnd.i.mainWin_h = this.Height;
+			Ground.i.mainWin_l = this.Left;
+			Ground.i.mainWin_t = this.Top;
+			Ground.i.mainWin_w = this.Width;
+			Ground.i.mainWin_h = this.Height;
 		}
 
 		private void MainWin_FormClosing(object sender, FormClosingEventArgs e)
@@ -129,13 +129,13 @@ namespace Charlotte
 				}
 				*/
 
-				if (Gnd.i.con != null)
+				if (Ground.i.con != null)
 				{
-					Gnd.i.con.eachTimerTick();
+					Ground.i.con.eachTimerTick();
 
 					// スクリーン更新
 					{
-						Image img = Gnd.i.con.lastScreenImage;
+						Image img = Ground.i.con.lastScreenImage;
 
 						if (img != null)
 						{
@@ -152,7 +152,7 @@ namespace Charlotte
 
 					// マウスカーソル変更
 					{
-						Cursor cursor = Gnd.i.con.lastMouseCursor;
+						Cursor cursor = Ground.i.con.lastMouseCursor;
 
 						if (cursor != null)
 						{
@@ -215,23 +215,23 @@ namespace Charlotte
 							screenB = b;
 						}
 
-						Gnd.i.con.sendToSender(
+						Ground.i.con.sendToSender(
 							"ACTIVE",
 							"" + (activeFlag ? 1 : 0)
 							);
 
-						Gnd.i.con.sendToSender(
+						Ground.i.con.sendToSender(
 							"MOUSE-ACTIVE-OUT-OF-SCREEN",
-							"" + (Gnd.i.mouseActiveOutOfScreen ? 1 : 0)
+							"" + (Ground.i.mouseActiveOutOfScreen ? 1 : 0)
 							);
 
-						Gnd.i.con.sendToSender(
+						Ground.i.con.sendToSender(
 							"MOUSE-LT",
 							"" + mouseL,
 							"" + mouseT
 							);
 
-						Gnd.i.con.sendToSender(
+						Ground.i.con.sendToSender(
 							"SCREEN-LTRB",
 							"" + screenL,
 							"" + screenT,
@@ -239,14 +239,14 @@ namespace Charlotte
 							"" + screenB
 							);
 
-						Gnd.i.con.sendToSender(
+						Ground.i.con.sendToSender(
 							"SEND-TO-SERVER",
-							"#-MONITOR-INDEX " + Gnd.i.con.monitorIndex
+							"#-MONITOR-INDEX " + Ground.i.con.monitorIndex
 							);
 
-						Gnd.i.con.sendToSender(
+						Ground.i.con.sendToSender(
 							"SEND-TO-SERVER",
-							"#-QUALITY " + Gnd.i.quality
+							"#-QUALITY " + Ground.i.quality
 							);
 
 						// ステータス表示の更新
@@ -266,7 +266,7 @@ namespace Charlotte
 						}
 					}
 
-					if (Gnd.i.con.hasAccident()) // 相手側からの切断など、disconnect するので最後に！
+					if (Ground.i.con.hasAccident()) // 相手側からの切断など、disconnect するので最後に！
 					{
 						disconnect();
 					}
@@ -341,10 +341,10 @@ namespace Charlotte
 		{
 			this.mtEnabled = false;
 
-			if (Gnd.i.con != null)
+			if (Ground.i.con != null)
 			{
-				Gnd.ServerInfo si = Gnd.i.con.si;
-				int monitorIndex = Gnd.i.con.monitorIndex;
+				Ground.ServerInfo si = Ground.i.con.si;
+				int monitorIndex = Ground.i.con.monitorIndex;
 
 				disconnect(); // 同じところに繋ぐので、new Connection() する前に disconnect() する必要がある！
 				connected(new Connection(si, monitorIndex));
@@ -367,7 +367,7 @@ namespace Charlotte
 			Bitmap imgSample = null;
 
 			{
-				MonitorCenter.Monitor m = Gnd.i.monitorCenter.get(0);
+				MonitorCenter.Monitor m = Ground.i.monitorCenter.get(0);
 
 				int l = m.l;
 				int t = m.t;
@@ -571,9 +571,9 @@ namespace Charlotte
 		{
 			this.mtEnabled = false;
 
-			if (Gnd.i.con != null)
+			if (Ground.i.con != null)
 			{
-				Gnd.ServerInfo si = Gnd.i.con.si;
+				Ground.ServerInfo si = Ground.i.con.si;
 
 				disconnect(); // 同じところに繋ぐので、new Connection() する前に disconnect() する必要がある！
 				connected(new Connection(si, monitorIndex));
@@ -586,12 +586,12 @@ namespace Charlotte
 		/// </summary>
 		private void disconnect()
 		{
-			if (Gnd.i.con != null)
+			if (Ground.i.con != null)
 			{
 				BusyDlg.perform(delegate
 				{
-					Gnd.i.con.Dispose();
-					Gnd.i.con = null;
+					Ground.i.con.Dispose();
+					Ground.i.con = null;
 				},
 				this
 				);
@@ -628,7 +628,7 @@ namespace Charlotte
 		{
 			disconnect();
 
-			Gnd.i.con = con;
+			Ground.i.con = con;
 
 			this.pbScreen.Left = 0;
 			this.pbScreen.Top = 0;

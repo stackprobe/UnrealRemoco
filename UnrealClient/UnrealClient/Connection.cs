@@ -11,7 +11,7 @@ namespace Charlotte
 {
 	public class Connection : IDisposable
 	{
-		public Gnd.ServerInfo si;
+		public Ground.ServerInfo si;
 		public int monitorIndex;
 
 		/// <summary>
@@ -20,7 +20,7 @@ namespace Charlotte
 		/// </summary>
 		/// <param name="si"></param>
 		/// <param name="monitorIndex"></param>
-		public Connection(Gnd.ServerInfo si, int monitorIndex)
+		public Connection(Ground.ServerInfo si, int monitorIndex)
 		{
 			this.si = si;
 			this.monitorIndex = monitorIndex;
@@ -42,9 +42,9 @@ namespace Charlotte
 			}
 			else
 			{
-				_senderProc = new SenderProc("localhost", Gnd.i.relayPortNo);
+				_senderProc = new SenderProc("localhost", Ground.i.relayPortNo);
 				_recorderProc = new RecorderProc();
-				_crypTunnelProc = new CrypTunnelProc(Gnd.i.relayPortNo, si.host, si.portNo, si.key, si.passphrase + Gnd.i.passphraseSuffix);
+				_crypTunnelProc = new CrypTunnelProc(Ground.i.relayPortNo, si.host, si.portNo, si.key, si.passphrase + Ground.i.passphraseSuffix);
 			}
 			_frtwv = new Fortewave(Consts.FRTWV_SENDER_TO_CLIENT, Consts.FRTWV_CLIENT_TO_SENDER);
 			_frtwv.clear();
@@ -77,16 +77,16 @@ namespace Charlotte
 							{
 								Image img = Bitmap.FromStream(new MemoryStream(recvData, c, recvData.Length - c));
 
-								if (img.Width < Gnd.i.screen_w_min)
+								if (img.Width < Ground.i.screen_w_min)
 									throw new Exception("スクリーンの幅が小さすぎます。");
 
-								if (img.Height < Gnd.i.screen_h_min)
+								if (img.Height < Ground.i.screen_h_min)
 									throw new Exception("スクリーンの高さが小さすぎます。");
 
-								if (Gnd.i.screen_w_max < img.Width)
+								if (Ground.i.screen_w_max < img.Width)
 									throw new Exception("スクリーンの幅が大き過ぎます。");
 
-								if (Gnd.i.screen_h_max < img.Height)
+								if (Ground.i.screen_h_max < img.Height)
 									throw new Exception("スクリーンの高さが大き過ぎます。");
 
 								lastScreenImage = img;

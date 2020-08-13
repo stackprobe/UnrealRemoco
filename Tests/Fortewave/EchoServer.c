@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 	Recver = Frtwv_Create("UNREAL-TEST-CS-S");
 	Sender = Frtwv_Create("UNREAL-TEST-CS-R");
 
-	cout("I—¹‚·‚é‚É‚Í ESC ‰Ÿ‚¹‰Ÿ‚¹‚¨\n");
+	cout("I—¹‚·‚é‚É‚Í ESC ‚ğ‰Ÿ‚µ‚Ä‰º‚³‚¢B\n");
 
 	while(waitKey(0) != 0x1b)
 	{

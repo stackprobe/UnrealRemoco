@@ -14,7 +14,7 @@ namespace Charlotte
 		private int _recvPortNo;
 		private string _serverHost;
 		private int _serverPortNo;
-		private Gnd.KeyData _key; // null == パスフレーズで暗号化する。
+		private Ground.KeyData _key; // null == パスフレーズで暗号化する。
 		private string _passphrase;
 		private Process _proc;
 
@@ -26,7 +26,7 @@ namespace Charlotte
 		/// <param name="serverPortNo"></param>
 		/// <param name="key">null == パスフレーズで暗号化する。</param>
 		/// <param name="passphrase"></param>
-		public CrypTunnelProc(int recvPortNo, string serverHost, int serverPortNo, Gnd.KeyData key, string passphrase)
+		public CrypTunnelProc(int recvPortNo, string serverHost, int serverPortNo, Ground.KeyData key, string passphrase)
 		{
 			_recvPortNo = recvPortNo;
 			_serverHost = serverHost;

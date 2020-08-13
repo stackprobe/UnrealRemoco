@@ -13,7 +13,7 @@ namespace Charlotte
 
 		public RecorderProc()
 		{
-			_proc = Utils.startConsole(Gnd.i.getUnrealPlayerFile(), "RECORDER");
+			_proc = Utils.startConsole(Ground.i.getUnrealPlayerFile(), "RECORDER");
 		}
 
 		public bool hasAccident()

@@ -26,7 +26,7 @@ namespace Charlotte
 
 		private void TestFortewaveWin_Load(object sender, EventArgs e)
 		{
-			_ftwv = new Fortewave("UNREAL-TEST-CS-R", "UNREAL-TEST-CS-S"); // 引数の並びが、Recver -> Sender になってるよ！
+			_ftwv = new Fortewave("UNREAL-TEST-CS-R", "UNREAL-TEST-CS-S"); // 引数の並び -> Recver, Sender
 
 			_th = new Thread((ThreadStart)delegate
 			{
@@ -40,9 +40,9 @@ namespace Charlotte
 
 						this.BeginInvoke((MethodInvoker)delegate
 						{
-							textBox2.Text += "\r\n" + message;
-							textBox2.SelectionStart = textBox2.TextLength;
-							textBox2.ScrollToCaret();
+							txtRecv.Text += "\r\n" + message;
+							txtRecv.SelectionStart = txtRecv.TextLength;
+							txtRecv.ScrollToCaret();
 						});
 					}
 				}
@@ -61,17 +61,17 @@ namespace Charlotte
 			_ftwv = null;
 		}
 
-		private void textBox1_TextChanged(object sender, EventArgs e)
+		private void txtSend_TextChanged(object sender, EventArgs e)
 		{
 			// noop
 		}
 
-		private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+		private void txtSend_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (e.KeyChar == (char)10) // ctrl_enter
 			{
-				string message = textBox1.Text;
-				textBox1.Text = "";
+				string message = txtSend.Text;
+				txtSend.Text = "";
 				message = message.Replace("\r", "");
 				string[] lines = message.Split('\n');
 
@@ -79,7 +79,7 @@ namespace Charlotte
 				{
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						label1.Text = "Sending...";
+						lblStatus.Text = "送信中";
 					});
 
 					foreach (string line in lines)
@@ -87,13 +87,18 @@ namespace Charlotte
 
 					this.BeginInvoke((MethodInvoker)delegate
 					{
-						label1.Text = "Sent!";
+						lblStatus.Text = "送信完了";
 					});
 				})
 				.Start();
 
 				e.Handled = true;
 			}
+		}
+
+		private void txtRecv_TextChanged(object sender, EventArgs e)
+		{
+			// noop
 		}
 	}
 }

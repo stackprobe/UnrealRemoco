@@ -34,13 +34,13 @@ namespace Charlotte
 				checkAloneExe();
 				checkLogonUser();
 
-				Gnd.i = new Gnd();
+				Ground.i = new Ground();
 
 				Utils.AntiWindowsDefenderSmartScreen();
 
 				//Gnd.i.logger.clear();
-				Gnd.i.loadConf();
-				Gnd.i.loadData();
+				Ground.i.loadConf();
+				Ground.i.loadData();
 
 				// Kill Zombies
 				{
@@ -63,7 +63,7 @@ namespace Charlotte
 
 				// < orig
 
-				Gnd.i.saveData();
+				Ground.i.saveData();
 
 				// release Gnd.i
 				{

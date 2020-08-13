@@ -13,7 +13,7 @@ namespace Charlotte
 
 		public SenderProc(string serverHost, int serverPortNo)
 		{
-			_proc = Utils.startConsole(Gnd.i.getUnrealPlayerFile(), "SENDER " + serverHost + " " + serverPortNo);
+			_proc = Utils.startConsole(Ground.i.getUnrealPlayerFile(), "SENDER " + serverHost + " " + serverPortNo);
 		}
 
 		public bool hasAccident()

@@ -28,54 +28,56 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
+			this.txtSend = new System.Windows.Forms.TextBox();
+			this.txtRecv = new System.Windows.Forms.TextBox();
+			this.lblStatus = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
-			// textBox1
+			// txtSend
 			// 
-			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.txtSend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.Location = new System.Drawing.Point(12, 12);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(630, 66);
-			this.textBox1.TabIndex = 0;
-			this.textBox1.Text = "ここにメッセージを書いてね。\r\n１行を１メッセージとして送るよ。\r\n送るには ctrl+enter を押してね。";
-			this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-			this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+			this.txtSend.Location = new System.Drawing.Point(12, 12);
+			this.txtSend.Multiline = true;
+			this.txtSend.Name = "txtSend";
+			this.txtSend.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.txtSend.Size = new System.Drawing.Size(630, 66);
+			this.txtSend.TabIndex = 0;
+			this.txtSend.Text = "ここにメッセージを書いて下さい。\r\n１行を１メッセージとして送ります。\r\n送るには ctrl+enter を押して下さい。";
+			this.txtSend.TextChanged += new System.EventHandler(this.txtSend_TextChanged);
+			this.txtSend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSend_KeyPress);
 			// 
-			// textBox2
+			// txtRecv
 			// 
-			this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.txtRecv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox2.Location = new System.Drawing.Point(12, 104);
-			this.textBox2.Multiline = true;
-			this.textBox2.Name = "textBox2";
-			this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBox2.Size = new System.Drawing.Size(630, 385);
-			this.textBox2.TabIndex = 2;
-			this.textBox2.Text = "受信ぽ";
+			this.txtRecv.Location = new System.Drawing.Point(12, 104);
+			this.txtRecv.Multiline = true;
+			this.txtRecv.Name = "txtRecv";
+			this.txtRecv.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.txtRecv.Size = new System.Drawing.Size(630, 385);
+			this.txtRecv.TabIndex = 2;
+			this.txtRecv.Text = "受信メッセージ";
+			this.txtRecv.TextChanged += new System.EventHandler(this.txtRecv_TextChanged);
 			// 
-			// label1
+			// lblStatus
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(12, 81);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(47, 20);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "label1";
+			this.lblStatus.AutoSize = true;
+			this.lblStatus.Location = new System.Drawing.Point(12, 81);
+			this.lblStatus.Name = "lblStatus";
+			this.lblStatus.Size = new System.Drawing.Size(61, 20);
+			this.lblStatus.TabIndex = 1;
+			this.lblStatus.Text = "送信可能";
 			// 
 			// TestFortewaveWin
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(654, 501);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.lblStatus);
+			this.Controls.Add(this.txtRecv);
+			this.Controls.Add(this.txtSend);
 			this.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "TestFortewaveWin";
@@ -90,8 +92,8 @@
 
 		#endregion
 
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox txtSend;
+		private System.Windows.Forms.TextBox txtRecv;
+		private System.Windows.Forms.Label lblStatus;
 	}
 }

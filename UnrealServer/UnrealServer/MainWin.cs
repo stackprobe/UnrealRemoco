@@ -81,6 +81,8 @@ namespace Charlotte
 		private void 終了XToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.mtEnabled = false;
+			this.taskTrayIcon.Visible = false;
+
 			this.Close();
 		}
 
@@ -126,21 +128,27 @@ namespace Charlotte
 		private void 設定SToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.mtEnabled = false;
+			this.taskTrayIcon.Visible = false;
 			endService();
 
 			using (SettingDlg f = new SettingDlg())
 			{
 				f.ShowDialog();
 			}
+
 			startService();
+			this.taskTrayIcon.Visible = true;
 			this.mtEnabled = true;
 		}
 
 		private void 再起動RToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.mtEnabled = false;
+			this.taskTrayIcon.Visible = false;
 			endService();
+
 			startService();
+			this.taskTrayIcon.Visible = true;
 			this.mtEnabled = true;
 		}
 	}

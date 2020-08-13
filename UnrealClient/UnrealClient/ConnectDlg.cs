@@ -35,10 +35,10 @@ namespace Charlotte
 			//this.txtPortNo.Text = "";
 			this.txtKeyIdent.Text = "";
 			this.txtPassphrase.Text = "";
-			this.txtRelayPortNo.Text = "" + Gnd.i.relayPortNo;
+			this.txtRelayPortNo.Text = "" + Ground.i.relayPortNo;
 
-			if (Gnd.i.lastConServerInfo != null)
-				setServerInfo(Gnd.i.lastConServerInfo);
+			if (Ground.i.lastConServerInfo != null)
+				setServerInfo(Ground.i.lastConServerInfo);
 
 			refreshUI();
 		}
@@ -54,11 +54,11 @@ namespace Charlotte
 
 			// load siSheet
 			{
-				siSheet.RowCount = Gnd.i.serverInfos.Count;
+				siSheet.RowCount = Ground.i.serverInfos.Count;
 
-				for (int index = 0; index < Gnd.i.serverInfos.Count; index++)
+				for (int index = 0; index < Ground.i.serverInfos.Count; index++)
 				{
-					siSheetSetRow(index, Gnd.i.serverInfos[index]);
+					siSheetSetRow(index, Ground.i.serverInfos[index]);
 				}
 			}
 
@@ -77,11 +77,11 @@ namespace Charlotte
 		{
 			// save siSheet
 			{
-				Gnd.i.serverInfos.Clear();
+				Ground.i.serverInfos.Clear();
 
 				for (int rowidx = 0; rowidx < siSheet.RowCount; rowidx++)
 				{
-					Gnd.i.serverInfos.Add(siSheetGetRow(rowidx));
+					Ground.i.serverInfos.Add(siSheetGetRow(rowidx));
 				}
 			}
 		}
@@ -95,8 +95,8 @@ namespace Charlotte
 		{
 			try
 			{
-				Gnd.ServerInfo si = getServerInfo(true);
-				Gnd.i.lastConServerInfo = si;
+				Ground.ServerInfo si = getServerInfo(true);
+				Ground.i.lastConServerInfo = si;
 				Connection con = new Connection(si, 0);
 				retCon = con;
 				this.Close();
@@ -178,7 +178,7 @@ namespace Charlotte
 			Utils.addColumn(siSheet, colidx++, "args", true);
 		}
 
-		private void siSheetSetRow(int rowidx, Gnd.ServerInfo si)
+		private void siSheetSetRow(int rowidx, Ground.ServerInfo si)
 		{
 			DataGridViewRow row = siSheet.Rows[rowidx];
 			int colidx = 0;
@@ -192,9 +192,9 @@ namespace Charlotte
 			row.Cells[colidx++].Value = StringTools.encodeLines(FieldsSerializer.serialize(si));
 		}
 
-		private Gnd.ServerInfo siSheetGetRow(int rowidx)
+		private Ground.ServerInfo siSheetGetRow(int rowidx)
 		{
-			Gnd.ServerInfo si = new Gnd.ServerInfo();
+			Ground.ServerInfo si = new Ground.ServerInfo();
 			FieldsSerializer.deserialize(si, StringTools.decodeLines(siSheet.Rows[rowidx].Cells[siSheet.ColumnCount - 1].Value.ToString()));
 			return si;
 		}
@@ -218,12 +218,12 @@ namespace Charlotte
 		{
 			try
 			{
-				Gnd.ServerInfo si = getServerInfo();
+				Ground.ServerInfo si = getServerInfo();
 				int rowidx = getRowIndexByTitle(si.title);
 
 				if (rowidx == -1)
 				{
-					if (Gnd.i.serverInfoCountMax <= siSheet.RowCount)
+					if (Ground.i.serverInfoCountMax <= siSheet.RowCount)
 					{
 						MessageBox.Show(
 							"項目数の上限に達したため、これ以上追加できません。",
@@ -258,14 +258,14 @@ namespace Charlotte
 			}
 		}
 
-		private Gnd.KeyData _keyData = null;
+		private Ground.KeyData _keyData = null;
 
 		/// <summary>
 		/// 画面の入力値から ServerInfo を生成する。
 		/// 入力に問題があれば、例外を投げる。
 		/// </summary>
 		/// <returns></returns>
-		private Gnd.ServerInfo getServerInfo(bool anonimousMode = false)
+		private Ground.ServerInfo getServerInfo(bool anonimousMode = false)
 		{
 			if (!anonimousMode)
 			{
@@ -349,7 +349,7 @@ namespace Charlotte
 
 			// <-- check
 
-			Gnd.ServerInfo si = new Gnd.ServerInfo();
+			Ground.ServerInfo si = new Ground.ServerInfo();
 
 			si.title = this.txtTitle.Text;
 			si.host = this.txtHost.Text;
@@ -371,12 +371,12 @@ namespace Charlotte
 					break;
 			}
 
-			Gnd.i.relayPortNo = int.Parse(this.txtRelayPortNo.Text); // ここでいいのか？
+			Ground.i.relayPortNo = int.Parse(this.txtRelayPortNo.Text); // ここでいいのか？
 
 			return si;
 		}
 
-		private void setServerInfo(Gnd.ServerInfo si)
+		private void setServerInfo(Ground.ServerInfo si)
 		{
 			this.txtTitle.Text = si.title;
 			this.txtHost.Text = si.host;
@@ -390,12 +390,12 @@ namespace Charlotte
 
 		private void doSortSISheet()
 		{
-			List<Gnd.ServerInfo> list = new List<Gnd.ServerInfo>();
+			List<Ground.ServerInfo> list = new List<Ground.ServerInfo>();
 
 			for (int rowidx = 0; rowidx < siSheet.RowCount; rowidx++)
 				list.Add(siSheetGetRow(rowidx));
 
-			ArrayTools.sort<Gnd.ServerInfo>(list, delegate(Gnd.ServerInfo a, Gnd.ServerInfo b)
+			ArrayTools.sort<Ground.ServerInfo>(list, delegate(Ground.ServerInfo a, Ground.ServerInfo b)
 			{
 				return StringTools.comp(a.title, b.title);
 			});
@@ -418,7 +418,7 @@ namespace Charlotte
 		{
 			try
 			{
-				Gnd.ServerInfo si = siSheetGetRow(rowidx);
+				Ground.ServerInfo si = siSheetGetRow(rowidx);
 				Connection con = new Connection(si, 0);
 				retCon = con;
 				this.Close();
@@ -436,7 +436,7 @@ namespace Charlotte
 			if (rowidx == -1)
 				return;
 
-			Gnd.ServerInfo si = siSheetGetRow(rowidx);
+			Ground.ServerInfo si = siSheetGetRow(rowidx);
 			setServerInfo(si);
 		}
 
@@ -447,7 +447,7 @@ namespace Charlotte
 			if (rowidx == -1)
 				return;
 
-			Gnd.ServerInfo si = siSheetGetRow(rowidx);
+			Ground.ServerInfo si = siSheetGetRow(rowidx);
 			string valTitle = si.title;
 
 			for (; ; )
@@ -490,7 +490,7 @@ namespace Charlotte
 			if (rowidx == -1)
 				return;
 
-			Gnd.ServerInfo si = siSheetGetRow(rowidx);
+			Ground.ServerInfo si = siSheetGetRow(rowidx);
 
 			if (MessageBox.Show(
 				"設定「" + si.title + "」を削除します。\n宜しいですか？",

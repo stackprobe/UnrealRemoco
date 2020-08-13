@@ -18,7 +18,7 @@ namespace ScreenRect
 
 		private void MainWin_Load(object sender, EventArgs e)
 		{
-			string imgFile = @"C:\var\デスクトップのスクリーンショット.png";
+			string imgFile = @"C:\var\壁紙\yande.re_268445~1000.png";
 
 			this.pbScreen.Image = new Bitmap(imgFile);
 

@@ -18,8 +18,8 @@ namespace Charlotte
 
 			// load
 			{
-				this.txtRelayPortNo.Text = "" + Gnd.i.relayPortNo;
-				this.cbActivateOutOfScreen.Checked = Gnd.i.mouseActiveOutOfScreen;
+				this.txtRelayPortNo.Text = "" + Ground.i.relayPortNo;
+				this.cbActivateOutOfScreen.Checked = Ground.i.mouseActiveOutOfScreen;
 			}
 		}
 
@@ -67,8 +67,8 @@ namespace Charlotte
 
 				// save
 				{
-					Gnd.i.relayPortNo = int.Parse(this.txtRelayPortNo.Text);
-					Gnd.i.mouseActiveOutOfScreen = this.cbActivateOutOfScreen.Checked;
+					Ground.i.relayPortNo = int.Parse(this.txtRelayPortNo.Text);
+					Ground.i.mouseActiveOutOfScreen = this.cbActivateOutOfScreen.Checked;
 				}
 				this.Close();
 			}

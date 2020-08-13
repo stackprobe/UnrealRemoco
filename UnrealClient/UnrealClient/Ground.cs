@@ -7,25 +7,25 @@ using System.IO;
 
 namespace Charlotte
 {
-	public class Gnd
+	public class Ground
 	{
 #if true
-		public static Gnd i;
+		public static Ground i;
 #else
-		private static Gnd _i = null;
+		private static Ground _i = null;
 
-		public static Gnd i
+		public static Ground i
 		{
 			get
 			{
 				if (_i == null)
-					_i = new Gnd();
+					_i = new Ground();
 
 				return _i;
 			}
 		}
 
-		private Gnd()
+		private Ground()
 		{ }
 #endif
 
@@ -199,7 +199,7 @@ namespace Charlotte
 
 		public class ServerInfo
 		{
-			public string title = "名無しの設定さん";
+			public string title = "新しい設定";
 			public string host = "localhost";
 			public int portNo = 55900;
 			public KeyData key = null; // null == 指定無し

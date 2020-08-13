@@ -102,7 +102,7 @@ namespace Charlotte
 		{
 			Process p;
 
-			switch (Gnd.i.consoleWinStyle)
+			switch (Ground.i.consoleWinStyle)
 			{
 				case ProcessTools.WindowStyle_e.INVISIBLE:
 					p = ProcessTools.start(file, "//-C " + args);
@@ -164,7 +164,7 @@ namespace Charlotte
 
 		public static bool Is初回起動()
 		{
-			return Gnd.i.is初回起動();
+			return Ground.i.is初回起動();
 		}
 
 		private static long WriteLogCount = 0L;
@@ -173,7 +173,7 @@ namespace Charlotte
 		{
 			string logFile = Path.Combine(Program.selfDir, Path.GetFileNameWithoutExtension(Program.selfFile) + ".log");
 
-			using (StreamWriter writer = new StreamWriter(logFile, WriteLogCount++ % Gnd.i.clearLogCycle != 0, Encoding.UTF8))
+			using (StreamWriter writer = new StreamWriter(logFile, WriteLogCount++ % Ground.i.clearLogCycle != 0, Encoding.UTF8))
 			{
 				writer.WriteLine("[" + DateTime.Now + "] " + message);
 			}

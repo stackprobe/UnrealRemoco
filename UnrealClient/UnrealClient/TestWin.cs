@@ -17,11 +17,11 @@ namespace Charlotte
 			InitializeComponent();
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void btnTestFieldsSerializer_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				Gnd.ServerInfo si = new Gnd.ServerInfo();
+				Ground.ServerInfo si = new Ground.ServerInfo();
 				string[] lines = FieldsSerializer.serialize(si);
 				FieldsSerializer.deserialize(si, lines);
 			}
@@ -31,13 +31,13 @@ namespace Charlotte
 			}
 		}
 
-		private void button2_Click(object sender, EventArgs e)
+		private void btnTestFieldsSerializer_02_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				Gnd.ServerInfo si = new Gnd.ServerInfo();
+				Ground.ServerInfo si = new Ground.ServerInfo();
 
-				si.key = new Gnd.KeyData();
+				si.key = new Ground.KeyData();
 
 				string[] lines = FieldsSerializer.serialize(si);
 				FieldsSerializer.deserialize(si, lines);
@@ -48,7 +48,7 @@ namespace Charlotte
 			}
 		}
 
-		private void button3_Click(object sender, EventArgs e)
+		private void btnTestFortewave_Click(object sender, EventArgs e)
 		{
 			new TestFortewaveWin().Show();
 		}

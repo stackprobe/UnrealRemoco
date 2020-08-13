@@ -24,7 +24,7 @@ namespace Charlotte
 
 			// load
 			{
-				this.barQuality.Value = Gnd.i.quality;
+				this.barQuality.Value = Ground.i.quality;
 			}
 		}
 
@@ -58,7 +58,7 @@ namespace Charlotte
 		{
 			// save
 			{
-				Gnd.i.quality = this.barQuality.Value;
+				Ground.i.quality = this.barQuality.Value;
 			}
 			this.Close();
 		}
