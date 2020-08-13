@@ -289,9 +289,15 @@ namespace Charlotte
 
 		private int _notifyCount;
 		private int _notifyPeriod = 1;
+		private int _notifyDelay;
 
 		private bool isTimeToNotify()
 		{
+			if (0 < _notifyDelay)
+			{
+				_notifyDelay--;
+				return false;
+			}
 			_notifyCount++;
 			_notifyCount %= _notifyPeriod;
 
@@ -310,6 +316,12 @@ namespace Charlotte
 			_notifyPeriod = 1;
 		}
 
+		private void doNotifyDelay()
+		{
+			doNotify();
+			_notifyDelay = 10;
+		}
+
 		private void mainPanel_Paint(object sender, PaintEventArgs e)
 		{
 			// noop
@@ -320,10 +332,10 @@ namespace Charlotte
 			// noop
 		}
 
-		private void 接続CToolStripMenuItem1_Click(object sender, EventArgs e)
+		private void 接続CToolStripMenuItemSub_Click(object sender, EventArgs e)
 		{
 			this.mtEnabled = false;
-			disconnect(); // 同じところに繋ぐかもしれないので、
+			disconnect(); // 同じところに繋ぐかもしれないので、new Connection() する前に disconnect() する必要がある！
 
 			using (ConnectDlg f = new ConnectDlg())
 			{
@@ -722,6 +734,12 @@ namespace Charlotte
 			doNotify();
 		}
 
+		// ----
+
+		//
+		// 画面上部のメニューが増えたら追加する。
+		//
+
 		private bool isMenuBarMenuDroppingDown()
 		{
 			return
@@ -745,7 +763,7 @@ namespace Charlotte
 		private void アプリAToolStripMenuItem_DropDownClosed(object sender, EventArgs e)
 		{
 			droppingDownアプリA = false;
-			doNotify();
+			doNotifyDelay();
 		}
 
 		private void 接続CToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
@@ -757,7 +775,7 @@ namespace Charlotte
 		private void 接続CToolStripMenuItem_DropDownClosed(object sender, EventArgs e)
 		{
 			droppingDown接続C = false;
-			doNotify();
+			doNotifyDelay();
 		}
 
 		private void 設定SToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
@@ -769,7 +787,11 @@ namespace Charlotte
 		private void 設定SToolStripMenuItem_DropDownClosed(object sender, EventArgs e)
 		{
 			droppingDown設定S = false;
-			doNotify();
+			doNotifyDelay();
 		}
+
+		// ここへ追加..
+
+		// ----
 	}
 }
