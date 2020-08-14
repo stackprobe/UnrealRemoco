@@ -12,7 +12,7 @@ namespace Charlotte
 {
 	public partial class SettingDlg : Form
 	{
-		private Gnd.KeyData _key;
+		private Ground.KeyData _key;
 
 		public SettingDlg()
 		{
@@ -30,11 +30,11 @@ namespace Charlotte
 
 			// load
 			{
-				this.txtPortNo.Text = "" + Gnd.i.portNo;
-				this.cmbCipherMode.SelectedIndex = (int)Gnd.i.cipherMode;
-				_key = Gnd.i.key;
-				this.txtPassphrase.Text = Gnd.i.passphrase;
-				this.txtForwardPortNo.Text = "" + Gnd.i.forwardPortNo;
+				this.txtPortNo.Text = "" + Ground.i.portNo;
+				this.cmbCipherMode.SelectedIndex = (int)Ground.i.cipherMode;
+				_key = Ground.i.key;
+				this.txtPassphrase.Text = Ground.i.passphrase;
+				this.txtForwardPortNo.Text = "" + Ground.i.forwardPortNo;
 			}
 
 			refreshUI();
@@ -132,9 +132,9 @@ namespace Charlotte
 
 				// save
 				{
-					Gnd.i.portNo = int.Parse(this.txtPortNo.Text);
-					Gnd.i.key = null;
-					Gnd.i.passphrase = "";
+					Ground.i.portNo = int.Parse(this.txtPortNo.Text);
+					Ground.i.key = null;
+					Ground.i.passphrase = "";
 
 					switch (this.cmbCipherMode.SelectedIndex)
 					{
@@ -142,18 +142,18 @@ namespace Charlotte
 							break;
 
 						case (int)Consts.CipherMode_e.ENCRYPT_BY_KEY:
-							Gnd.i.key = _key;
+							Ground.i.key = _key;
 							break;
 
 						case (int)Consts.CipherMode_e.ENCRYPT_BY_PASSPHRASE:
-							Gnd.i.passphrase = this.txtPassphrase.Text;
+							Ground.i.passphrase = this.txtPassphrase.Text;
 							break;
 
 						default:
 							throw null;
 					}
 
-					Gnd.i.forwardPortNo = IntTools.toInt(this.txtForwardPortNo.Text, 1, 65535, 55901);
+					Ground.i.forwardPortNo = IntTools.toInt(this.txtForwardPortNo.Text, 1, 65535, 55901);
 				}
 				this.Close();
 			}
@@ -194,6 +194,7 @@ namespace Charlotte
 				this.lblForwardPortNo.Enabled = flag;
 				this.txtForwardPortNo.Enabled = flag;
 				this.lblForwardPortNoMemo.Enabled = flag;
+				this.lblForwardPortNoMemoSub.Enabled = flag;
 			}
 
 			{
@@ -232,6 +233,7 @@ namespace Charlotte
 				this.txtPassphrase.Text = "";
 				this.txtForwardPortNo.Text = "" + 55901;
 			}
+
 			refreshUI();
 		}
 	}

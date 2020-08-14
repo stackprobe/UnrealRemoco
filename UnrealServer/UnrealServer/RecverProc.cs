@@ -14,7 +14,7 @@ namespace Charlotte
 
 		public RecverProc(int portNo)
 		{
-			_proc = Utils.startConsole(Gnd.i.getUnrealPlayerFile(), "RECVER " + portNo + " " + getArgCursorHandles());
+			_proc = Utils.startConsole(Ground.i.getUnrealPlayerFile(), "RECVER " + portNo + " " + getArgCursorHandles());
 		}
 
 		private string getArgCursorHandles()

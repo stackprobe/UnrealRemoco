@@ -13,7 +13,7 @@ namespace Charlotte
 
 		public PlayerProc()
 		{
-			_proc = Utils.startConsole(Gnd.i.getUnrealPlayerFile(), "PLAYER");
+			_proc = Utils.startConsole(Ground.i.getUnrealPlayerFile(), "PLAYER");
 		}
 
 		public void Dispose()

@@ -15,16 +15,16 @@ namespace Charlotte
 
 		public Service()
 		{
-			if (Gnd.i.cipherMode == Consts.CipherMode_e.NOT_ENCRYPT)
+			if (Ground.i.cipherMode == Consts.CipherMode_e.NOT_ENCRYPT)
 			{
 				_playerProc = new PlayerProc();
-				_recverProc = new RecverProc(Gnd.i.portNo);
+				_recverProc = new RecverProc(Ground.i.portNo);
 			}
 			else
 			{
 				_playerProc = new PlayerProc();
-				_recverProc = new RecverProc(Gnd.i.forwardPortNo);
-				_crypTunnelProc = new CrypTunnelProc(Gnd.i.portNo, Gnd.i.forwardPortNo, Gnd.i.key, Gnd.i.passphrase + Gnd.i.passphraseSuffix);
+				_recverProc = new RecverProc(Ground.i.forwardPortNo);
+				_crypTunnelProc = new CrypTunnelProc(Ground.i.portNo, Ground.i.forwardPortNo, Ground.i.key, Ground.i.passphrase + Ground.i.passphraseSuffix);
 			}
 			_frtwv = new Fortewave(Consts.FRTWV_RECVER_TO_SERVER, Consts.FRTWV_SERVER_TO_RECVER);
 			_frtwv.clear();
@@ -63,9 +63,9 @@ namespace Charlotte
 					{
 						monitorIndex = int.Parse(prms[c++]);
 						monitorIndex = IntTools.toRange(monitorIndex, 0, IntTools.IMAX);
-						monitorIndex %= Gnd.i.monitorCenter.getCount();
+						monitorIndex %= Ground.i.monitorCenter.getCount();
 
-						MonitorCenter.Monitor monitor = Gnd.i.monitorCenter.get(monitorIndex);
+						MonitorCenter.Monitor monitor = Ground.i.monitorCenter.get(monitorIndex);
 
 						_frtwv.send(Utils.toOL(
 							"MOUSE_LTRB " +
@@ -82,7 +82,7 @@ namespace Charlotte
 					}
 					else if (command == "DISCONNECTED")
 					{
-						if (Gnd.i.disconnectAndShiftKeysUp)
+						if (Ground.i.disconnectAndShiftKeysUp)
 						{
 							_frtwv.send(Utils.toOL("SHIFT-KEYS-UP"));
 						}

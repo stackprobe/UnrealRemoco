@@ -12,9 +12,9 @@ namespace Charlotte
 {
 	public partial class KeyDataDlg : Form
 	{
-		public Gnd.KeyData retKeyData = null;
+		public Ground.KeyData retKeyData = null;
 
-		public KeyDataDlg(Gnd.KeyData kd)
+		public KeyDataDlg(Ground.KeyData kd)
 		{
 			InitializeComponent();
 
@@ -78,16 +78,16 @@ namespace Charlotte
 			}
 		}
 
-		private void setKeyData(Gnd.KeyData kd)
+		private void setKeyData(Ground.KeyData kd)
 		{
 			this.txtIdent.Text = kd.ident;
 			this.txtRaw.Text = kd.raw;
 			this.txtHash.Text = kd.hash;
 		}
 
-		private Gnd.KeyData getKeyData()
+		private Ground.KeyData getKeyData()
 		{
-			return new Gnd.KeyData()
+			return new Ground.KeyData()
 			{
 				ident = txtIdent.Text,
 				raw = txtRaw.Text,
@@ -124,7 +124,7 @@ namespace Charlotte
 
 		private void btnNew_Click(object sender, EventArgs e)
 		{
-			setKeyData(Gnd.KeyData.create());
+			setKeyData(Ground.KeyData.create());
 		}
 
 		private void btnImport_Click(object sender, EventArgs e)
@@ -155,7 +155,7 @@ namespace Charlotte
 					if (StringTools.hex(key).Length != 64)
 						throw new FailedOperation("鍵ファイルが壊れています。(Key length)");
 
-					if (hash != Gnd.KeyData.getHash(key))
+					if (hash != Ground.KeyData.getHash(key))
 						throw new FailedOperation("鍵ファイルが壊れています。(Hash)");
 
 					txtIdent.Text = ident;

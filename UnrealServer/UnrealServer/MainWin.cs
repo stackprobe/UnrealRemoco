@@ -50,17 +50,17 @@ namespace Charlotte
 		private void startService()
 		{
 			endService();
-			Gnd.i.service = new Service();
+			Ground.i.service = new Service();
 		}
 
 		private void endService()
 		{
-			if (Gnd.i.service != null)
+			if (Ground.i.service != null)
 			{
 				BusyDlg.perform(delegate
 				{
-					Gnd.i.service.Dispose();
-					Gnd.i.service = null;
+					Ground.i.service.Dispose();
+					Ground.i.service = null;
 				});
 			}
 		}
@@ -100,9 +100,9 @@ namespace Charlotte
 			try
 			{
 				// 停止状態になることが無い！
-				Gnd.i.service.eachTimerTick();
+				Ground.i.service.eachTimerTick();
 
-				if (Gnd.i.antiScreenSaver)
+				if (Ground.i.antiScreenSaver)
 				{
 					switch ((int)(this.mtCount % 100L))
 					{

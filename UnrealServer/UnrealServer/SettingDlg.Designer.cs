@@ -35,6 +35,7 @@
 			this.txtPortNo = new System.Windows.Forms.TextBox();
 			this.cmbCipherMode = new System.Windows.Forms.ComboBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.lblForwardPortNoMemoSub = new System.Windows.Forms.Label();
 			this.lblForwardPortNoMemo = new System.Windows.Forms.Label();
 			this.lblForwardPortNo = new System.Windows.Forms.Label();
 			this.txtForwardPortNo = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@
 			this.txtKey = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.btnDefault = new System.Windows.Forms.Button();
-			this.lblForwardPortNoMemoSub = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -124,6 +124,16 @@
 			this.groupBox1.TabIndex = 4;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "暗号化";
+			// 
+			// lblForwardPortNoMemoSub
+			// 
+			this.lblForwardPortNoMemoSub.AutoSize = true;
+			this.lblForwardPortNoMemoSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.lblForwardPortNoMemoSub.Location = new System.Drawing.Point(281, 189);
+			this.lblForwardPortNoMemoSub.Name = "lblForwardPortNoMemoSub";
+			this.lblForwardPortNoMemoSub.Size = new System.Drawing.Size(217, 20);
+			this.lblForwardPortNoMemoSub.TabIndex = 9;
+			this.lblForwardPortNoMemoSub.Text = "このポートは開放しないで下さい。";
 			// 
 			// lblForwardPortNoMemo
 			// 
@@ -226,16 +236,6 @@
 			this.btnDefault.Text = "デフォルト";
 			this.btnDefault.UseVisualStyleBackColor = true;
 			this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
-			// 
-			// lblForwardPortNoMemoSub
-			// 
-			this.lblForwardPortNoMemoSub.AutoSize = true;
-			this.lblForwardPortNoMemoSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.lblForwardPortNoMemoSub.Location = new System.Drawing.Point(281, 189);
-			this.lblForwardPortNoMemoSub.Name = "lblForwardPortNoMemoSub";
-			this.lblForwardPortNoMemoSub.Size = new System.Drawing.Size(217, 20);
-			this.lblForwardPortNoMemoSub.TabIndex = 9;
-			this.lblForwardPortNoMemoSub.Text = "このポートを開放しないで下さい。";
 			// 
 			// label2
 			// 

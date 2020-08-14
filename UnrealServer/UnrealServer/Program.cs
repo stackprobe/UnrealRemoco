@@ -34,13 +34,13 @@ namespace Charlotte
 				checkAloneExe();
 				checkLogonUser();
 
-				Gnd.i = new Gnd();
+				Ground.i = new Ground();
 
 				Utils.AntiWindowsDefenderSmartScreen();
 
 				//Gnd.i.logger.clear();
-				Gnd.i.loadConf();
-				Gnd.i.loadData();
+				Ground.i.loadConf();
+				Ground.i.loadData();
 
 				// Kill Zombies
 				{
@@ -52,7 +52,7 @@ namespace Charlotte
 					{
 						ev.set();
 					}
-					// crypTunnel -> CrypTunnelProc.cs
+					// crypTunnel.exe の停止 -> CrypTunnelProc.cs
 
 					// HACK -- Recver, Player の停止を待っていない。
 				}
@@ -65,7 +65,7 @@ namespace Charlotte
 
 				// < orig
 
-				Gnd.i.saveData();
+				Ground.i.saveData();
 
 				GlobalProcMtx.Release();
 				procMutex.ReleaseMutex();

@@ -7,35 +7,39 @@ using System.IO;
 
 namespace Charlotte
 {
-	public class Gnd
+	public class Ground
 	{
 #if true
-		public static Gnd i;
+		public static Ground i;
 #else
-		private static Gnd _i = null;
+		private static Ground _i = null;
 
-		public static Gnd i
+		public static Ground i
 		{
 			get
 			{
 				if (_i == null)
-					_i = new Gnd();
+					_i = new Ground();
 
 				return _i;
 			}
 		}
 
-		private Gnd()
+		private Ground()
 		{ }
 #endif
 
 		// ---- conf data ----
+
+		// conf items >
 
 		public ProcessTools.WindowStyle_e consoleWinStyle = ProcessTools.WindowStyle_e.INVISIBLE;
 		public string passphraseSuffix = "[x25]";
 		public bool disconnectAndShiftKeysUp = true;
 		public long clearLogCycle = 1000L;
 		public bool antiScreenSaver = false;
+
+		// < conf items
 
 		public void loadConf()
 		{
@@ -52,7 +56,7 @@ namespace Charlotte
 				if (int.Parse(lines[c++]) != lines.Count)
 					throw new Exception("Bad item count");
 
-				// items >
+				// conf items >
 
 				consoleWinStyle = (ProcessTools.WindowStyle_e)int.Parse(lines[c++]);
 				passphraseSuffix = lines[c++];
@@ -60,7 +64,7 @@ namespace Charlotte
 				clearLogCycle = long.Parse(lines[c++]);
 				antiScreenSaver = StringTools.toFlag(lines[c++]);
 
-				// < items
+				// < conf items
 			}
 			catch (Exception e)
 			{
@@ -75,10 +79,14 @@ namespace Charlotte
 
 		// ---- saved data ----
 
+		// items >
+
 		public int portNo = 55900;
 		public KeyData key = null; // null == 指定無し
 		public string passphrase = ""; // "" == 指定無し
 		public int forwardPortNo = 55901;
+
+		// < items
 
 		public void loadData()
 		{

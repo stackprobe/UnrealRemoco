@@ -13,11 +13,11 @@ namespace Charlotte
 		private WorkingDir _wd = new WorkingDir();
 		private int _recvPortNo;
 		private int _forwardPortNo;
-		private Gnd.KeyData _key; // null == パスフレーズで暗号化する。
+		private Ground.KeyData _key; // null == パスフレーズで暗号化する。
 		private string _passphrase;
 		private Process _proc;
 
-		public CrypTunnelProc(int recvPortNo, int forwardPortNo, Gnd.KeyData key, string passphrase)
+		public CrypTunnelProc(int recvPortNo, int forwardPortNo, Ground.KeyData key, string passphrase)
 		{
 			_recvPortNo = recvPortNo;
 			_forwardPortNo = forwardPortNo;
@@ -32,6 +32,8 @@ namespace Charlotte
 			// Kill Zombie
 			{
 				Utils.startConsole(getCrypTunnelFile(), _recvPortNo + " a 1 /S").WaitForExit();
+
+				// HACK -- crypTunnel.exe の停止を待っていない。
 			}
 
 			string prmFile = _wd.makePath();
