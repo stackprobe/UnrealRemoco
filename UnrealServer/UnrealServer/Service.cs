@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Charlotte.Tools;
+using System.Threading;
 
 namespace Charlotte
 {
@@ -106,6 +107,8 @@ namespace Charlotte
 		{
 			if (_playerProc != null)
 			{
+				Thread.Sleep(500); // zantei: クライアントから停止しようとした時にマウスカーソルの位置を調整する猶予
+
 				_playerProc.Dispose();
 				_playerProc = null;
 
