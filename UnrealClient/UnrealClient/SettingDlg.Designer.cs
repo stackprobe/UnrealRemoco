@@ -34,67 +34,80 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtRelayPortNo = new System.Windows.Forms.TextBox();
 			this.cbActivateOutOfScreen = new System.Windows.Forms.CheckBox();
+			this.lblRelayPortNoMemo = new System.Windows.Forms.Label();
 			this.SuspendLayout();
-			//
+			// 
 			// btnOk
-			//
+			// 
 			this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnOk.Location = new System.Drawing.Point(244, 152);
+			this.btnOk.Location = new System.Drawing.Point(257, 192);
 			this.btnOk.Name = "btnOk";
 			this.btnOk.Size = new System.Drawing.Size(116, 48);
 			this.btnOk.TabIndex = 3;
 			this.btnOk.Text = "OK";
 			this.btnOk.UseVisualStyleBackColor = true;
 			this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-			//
+			// 
 			// btnCancel
-			//
+			// 
 			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnCancel.Location = new System.Drawing.Point(366, 152);
+			this.btnCancel.Location = new System.Drawing.Point(379, 192);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(116, 48);
 			this.btnCancel.TabIndex = 4;
 			this.btnCancel.Text = "キャンセル";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-			//
+			// 
 			// label1
-			//
+			// 
 			this.label1.AutoSize = true;
 			this.label1.Location = new System.Drawing.Point(20, 50);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(126, 20);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "中継用ポート番号：";
-			//
+			// 
 			// txtRelayPortNo
-			//
-			this.txtRelayPortNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+			// 
+			this.txtRelayPortNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtRelayPortNo.Location = new System.Drawing.Point(152, 47);
 			this.txtRelayPortNo.MaxLength = 5;
 			this.txtRelayPortNo.Name = "txtRelayPortNo";
-			this.txtRelayPortNo.Size = new System.Drawing.Size(327, 27);
+			this.txtRelayPortNo.Size = new System.Drawing.Size(343, 27);
 			this.txtRelayPortNo.TabIndex = 1;
 			this.txtRelayPortNo.Text = "65535";
 			this.txtRelayPortNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			//
+			// 
 			// cbActivateOutOfScreen
-			//
+			// 
 			this.cbActivateOutOfScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.cbActivateOutOfScreen.AutoSize = true;
-			this.cbActivateOutOfScreen.Location = new System.Drawing.Point(90, 100);
+			this.cbActivateOutOfScreen.Location = new System.Drawing.Point(103, 130);
 			this.cbActivateOutOfScreen.Name = "cbActivateOutOfScreen";
 			this.cbActivateOutOfScreen.Size = new System.Drawing.Size(392, 24);
 			this.cbActivateOutOfScreen.TabIndex = 2;
 			this.cbActivateOutOfScreen.Text = "マウスカーソルがスクリーンの外に出てもアクティブにする。";
 			this.cbActivateOutOfScreen.UseVisualStyleBackColor = true;
-			//
+			// 
+			// lblRelayPortNoMemo
+			// 
+			this.lblRelayPortNoMemo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblRelayPortNoMemo.AutoSize = true;
+			this.lblRelayPortNoMemo.ForeColor = System.Drawing.Color.Teal;
+			this.lblRelayPortNoMemo.Location = new System.Drawing.Point(148, 77);
+			this.lblRelayPortNoMemo.Name = "lblRelayPortNoMemo";
+			this.lblRelayPortNoMemo.Size = new System.Drawing.Size(347, 20);
+			this.lblRelayPortNoMemo.TabIndex = 16;
+			this.lblRelayPortNoMemo.Text = "このコンピュータの空いているポートを指定して下さい。";
+			// 
 			// SettingDlg
-			//
+			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(494, 212);
+			this.ClientSize = new System.Drawing.Size(507, 252);
+			this.Controls.Add(this.lblRelayPortNoMemo);
 			this.Controls.Add(this.cbActivateOutOfScreen);
 			this.Controls.Add(this.txtRelayPortNo);
 			this.Controls.Add(this.label1);
@@ -125,5 +138,6 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox txtRelayPortNo;
 		private System.Windows.Forms.CheckBox cbActivateOutOfScreen;
+		private System.Windows.Forms.Label lblRelayPortNoMemo;
 	}
 }

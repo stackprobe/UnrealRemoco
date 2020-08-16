@@ -381,15 +381,15 @@
 			// クライアントからサーバーへToolStripMenuItem
 			// 
 			this.クライアントからサーバーへToolStripMenuItem.Name = "クライアントからサーバーへToolStripMenuItem";
-			this.クライアントからサーバーへToolStripMenuItem.Size = new System.Drawing.Size(411, 22);
-			this.クライアントからサーバーへToolStripMenuItem.Text = "「クライアント」のクリップボード・テキストを「サーバー」のクリップボードへコピー";
+			this.クライアントからサーバーへToolStripMenuItem.Size = new System.Drawing.Size(434, 22);
+			this.クライアントからサーバーへToolStripMenuItem.Text = "「クライアント」のクリップボードのテキストを「サーバー」のクリップボードへコピーする";
 			this.クライアントからサーバーへToolStripMenuItem.Click += new System.EventHandler(this.クライアントからサーバーへToolStripMenuItem_Click);
 			// 
 			// サーバーからクライアントへToolStripMenuItem
 			// 
 			this.サーバーからクライアントへToolStripMenuItem.Name = "サーバーからクライアントへToolStripMenuItem";
-			this.サーバーからクライアントへToolStripMenuItem.Size = new System.Drawing.Size(411, 22);
-			this.サーバーからクライアントへToolStripMenuItem.Text = "「サーバー」のクリップボード・テキストを「クライアント」のクリップボードへコピー";
+			this.サーバーからクライアントへToolStripMenuItem.Size = new System.Drawing.Size(434, 22);
+			this.サーバーからクライアントへToolStripMenuItem.Text = "「サーバー」のクリップボードのテキストを「クライアント」のクリップボードへコピーする";
 			this.サーバーからクライアントへToolStripMenuItem.Click += new System.EventHandler(this.サーバーからクライアントへToolStripMenuItem_Click);
 			// 
 			// テストToolStripMenuItem
@@ -403,7 +403,7 @@
 			// テストToolStripMenuItem1
 			// 
 			this.テストToolStripMenuItem1.Name = "テストToolStripMenuItem1";
-			this.テストToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+			this.テストToolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
 			this.テストToolStripMenuItem1.Text = "テスト";
 			this.テストToolStripMenuItem1.Click += new System.EventHandler(this.テストToolStripMenuItem1_Click);
 			// 
@@ -428,11 +428,11 @@
 			// lblMessage
 			// 
 			this.lblMessage.AutoSize = true;
-			this.lblMessage.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblMessage.Font = new System.Drawing.Font("Impact", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.lblMessage.Location = new System.Drawing.Point(12, 117);
 			this.lblMessage.Name = "lblMessage";
-			this.lblMessage.Size = new System.Drawing.Size(144, 29);
+			this.lblMessage.Size = new System.Drawing.Size(382, 80);
 			this.lblMessage.TabIndex = 0;
 			this.lblMessage.Text = "unconnected";
 			// 
