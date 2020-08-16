@@ -65,15 +65,15 @@
 			this.画質QToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
 			this.その他の設定SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.クリップボードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.クライアントからサーバーへToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.サーバーからクライアントへToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.テストToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.テストToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.mainTimer = new System.Windows.Forms.Timer(this.components);
 			this.mainPanel = new System.Windows.Forms.Panel();
 			this.lblMessage = new System.Windows.Forms.Label();
 			this.pbScreen = new System.Windows.Forms.PictureBox();
-			this.クリップボードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.クライアントからサーバーへToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.サーバーからクライアントへToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.mainPanel.SuspendLayout();
@@ -84,7 +84,7 @@
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 440);
+			this.statusStrip1.Location = new System.Drawing.Point(0, 439);
 			this.statusStrip1.Name = "statusStrip1";
 			this.statusStrip1.Size = new System.Drawing.Size(484, 22);
 			this.statusStrip1.TabIndex = 2;
@@ -367,6 +367,31 @@
 			this.その他の設定SToolStripMenuItem.Text = "その他の設定";
 			this.その他の設定SToolStripMenuItem.Click += new System.EventHandler(this.その他の設定SToolStripMenuItem_Click);
 			// 
+			// クリップボードToolStripMenuItem
+			// 
+			this.クリップボードToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.クライアントからサーバーへToolStripMenuItem,
+            this.サーバーからクライアントへToolStripMenuItem});
+			this.クリップボードToolStripMenuItem.Name = "クリップボードToolStripMenuItem";
+			this.クリップボードToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+			this.クリップボードToolStripMenuItem.Text = "クリップボード";
+			this.クリップボードToolStripMenuItem.DropDownClosed += new System.EventHandler(this.クリップボードToolStripMenuItem_DropDownClosed);
+			this.クリップボードToolStripMenuItem.DropDownOpened += new System.EventHandler(this.クリップボードToolStripMenuItem_DropDownOpened);
+			// 
+			// クライアントからサーバーへToolStripMenuItem
+			// 
+			this.クライアントからサーバーへToolStripMenuItem.Name = "クライアントからサーバーへToolStripMenuItem";
+			this.クライアントからサーバーへToolStripMenuItem.Size = new System.Drawing.Size(411, 22);
+			this.クライアントからサーバーへToolStripMenuItem.Text = "「クライアント」のクリップボード・テキストを「サーバー」のクリップボードへコピー";
+			this.クライアントからサーバーへToolStripMenuItem.Click += new System.EventHandler(this.クライアントからサーバーへToolStripMenuItem_Click);
+			// 
+			// サーバーからクライアントへToolStripMenuItem
+			// 
+			this.サーバーからクライアントへToolStripMenuItem.Name = "サーバーからクライアントへToolStripMenuItem";
+			this.サーバーからクライアントへToolStripMenuItem.Size = new System.Drawing.Size(411, 22);
+			this.サーバーからクライアントへToolStripMenuItem.Text = "「サーバー」のクリップボード・テキストを「クライアント」のクリップボードへコピー";
+			this.サーバーからクライアントへToolStripMenuItem.Click += new System.EventHandler(this.サーバーからクライアントへToolStripMenuItem_Click);
+			// 
 			// テストToolStripMenuItem
 			// 
 			this.テストToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -395,7 +420,7 @@
 			this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mainPanel.Location = new System.Drawing.Point(0, 24);
 			this.mainPanel.Name = "mainPanel";
-			this.mainPanel.Size = new System.Drawing.Size(484, 416);
+			this.mainPanel.Size = new System.Drawing.Size(484, 415);
 			this.mainPanel.TabIndex = 1;
 			this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.mainPanel_Scroll);
 			this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPanel_Paint);
@@ -420,36 +445,11 @@
 			this.pbScreen.TabStop = false;
 			this.pbScreen.Click += new System.EventHandler(this.pbScreen_Click);
 			// 
-			// クリップボードToolStripMenuItem
-			// 
-			this.クリップボードToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.クライアントからサーバーへToolStripMenuItem,
-            this.サーバーからクライアントへToolStripMenuItem});
-			this.クリップボードToolStripMenuItem.Name = "クリップボードToolStripMenuItem";
-			this.クリップボードToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-			this.クリップボードToolStripMenuItem.Text = "クリップボード";
-			this.クリップボードToolStripMenuItem.DropDownClosed += new System.EventHandler(this.クリップボードToolStripMenuItem_DropDownClosed);
-			this.クリップボードToolStripMenuItem.DropDownOpened += new System.EventHandler(this.クリップボードToolStripMenuItem_DropDownOpened);
-			// 
-			// クライアントからサーバーへToolStripMenuItem
-			// 
-			this.クライアントからサーバーへToolStripMenuItem.Name = "クライアントからサーバーへToolStripMenuItem";
-			this.クライアントからサーバーへToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
-			this.クライアントからサーバーへToolStripMenuItem.Text = "「クライアント」のCBテキストを「サーバー」へコピー";
-			this.クライアントからサーバーへToolStripMenuItem.Click += new System.EventHandler(this.クライアントからサーバーへToolStripMenuItem_Click);
-			// 
-			// サーバーからクライアントへToolStripMenuItem
-			// 
-			this.サーバーからクライアントへToolStripMenuItem.Name = "サーバーからクライアントへToolStripMenuItem";
-			this.サーバーからクライアントへToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
-			this.サーバーからクライアントへToolStripMenuItem.Text = "「サーバー」のCBテキストを「クライアント」へコピー";
-			this.サーバーからクライアントへToolStripMenuItem.Click += new System.EventHandler(this.サーバーからクライアントへToolStripMenuItem_Click);
-			// 
 			// MainWin
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(484, 462);
+			this.ClientSize = new System.Drawing.Size(484, 461);
 			this.Controls.Add(this.mainPanel);
 			this.Controls.Add(this.statusStrip1);
 			this.Controls.Add(this.menuStrip1);

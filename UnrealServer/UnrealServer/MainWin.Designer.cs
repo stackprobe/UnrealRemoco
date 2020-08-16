@@ -33,10 +33,10 @@
 			this.taskTrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.ttiMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.設定SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.再起動RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.終了XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.mainTimer = new System.Windows.Forms.Timer(this.components);
-			this.再起動RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ttiMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -54,24 +54,31 @@
             this.toolStripMenuItem1,
             this.終了XToolStripMenuItem});
 			this.ttiMenu.Name = "TTIMenu";
-			this.ttiMenu.Size = new System.Drawing.Size(153, 98);
+			this.ttiMenu.Size = new System.Drawing.Size(126, 76);
 			// 
 			// 設定SToolStripMenuItem
 			// 
 			this.設定SToolStripMenuItem.Name = "設定SToolStripMenuItem";
-			this.設定SToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.設定SToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
 			this.設定SToolStripMenuItem.Text = "設定(&S)";
 			this.設定SToolStripMenuItem.Click += new System.EventHandler(this.設定SToolStripMenuItem_Click);
+			// 
+			// 再起動RToolStripMenuItem
+			// 
+			this.再起動RToolStripMenuItem.Name = "再起動RToolStripMenuItem";
+			this.再起動RToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+			this.再起動RToolStripMenuItem.Text = "再起動(&R)";
+			this.再起動RToolStripMenuItem.Click += new System.EventHandler(this.再起動RToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(122, 6);
 			// 
 			// 終了XToolStripMenuItem
 			// 
 			this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
-			this.終了XToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.終了XToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
 			this.終了XToolStripMenuItem.Text = "終了(&X)";
 			this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
 			// 
@@ -81,18 +88,11 @@
 			this.mainTimer.Interval = 300;
 			this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
 			// 
-			// 再起動RToolStripMenuItem
-			// 
-			this.再起動RToolStripMenuItem.Name = "再起動RToolStripMenuItem";
-			this.再起動RToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.再起動RToolStripMenuItem.Text = "再起動(&R)";
-			this.再起動RToolStripMenuItem.Click += new System.EventHandler(this.再起動RToolStripMenuItem_Click);
-			// 
 			// MainWin
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(284, 262);
+			this.ClientSize = new System.Drawing.Size(284, 261);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Location = new System.Drawing.Point(-400, -400);
 			this.MaximizeBox = false;

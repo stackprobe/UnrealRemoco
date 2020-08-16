@@ -184,7 +184,7 @@ static void PerformTh(int sock, char *strip)
 				{
 					cout("Warning: 画像データが大き過ぎます。\n");
 				}
-				if(SEND_DATA_SIZE_MAX - getSize(imgData) < getSize(cbtxtData))
+				else if(SEND_DATA_SIZE_MAX - getSize(imgData) < getSize(cbtxtData))
 				{
 					cout("Warning: 画像・テキストデータが大き過ぎます。\n");
 				}

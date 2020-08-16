@@ -99,7 +99,7 @@ namespace Charlotte
 
 			try
 			{
-				// 停止状態になることが無い！
+				// この時点で停止状態であることはない。
 				Ground.i.service.eachTimerTick();
 
 				if (Ground.i.antiScreenSaver)
