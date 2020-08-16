@@ -810,7 +810,14 @@ namespace Charlotte
 
 		private void クライアントからサーバーへToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			if (Ground.i.con == null)
+				return;
+
 			string text = Clipboard.GetText();
+
+			if (text == null)
+				text = "(クリップボードにテキストはありません[C])";
+
 			byte[] bText = StringTools.ENCODING_SJIS.GetBytes(text);
 			string b64Text = StringTools.toBase64(bText);
 
@@ -822,6 +829,9 @@ namespace Charlotte
 
 		private void サーバーからクライアントへToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			if (Ground.i.con == null)
+				return;
+
 			Ground.i.con.sendToSender(
 				"SEND-TO-SERVER",
 				"#-GET-CLIP-BOARD-TEXT"

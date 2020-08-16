@@ -99,10 +99,15 @@ namespace Charlotte
 					}
 					else if (command == "GET-CLIP-BOARD-TEXT")
 					{
+						string text = Clipboard.GetText();
+
+						if (text == null)
+							text = "(クリップボードにテキストはありません[S])";
+
 						_frtwv.send(Utils.toOL(
 							"SEND-TO-CLIENT",
 							"",
-							Clipboard.GetText()
+							text
 							));
 					}
 					else
