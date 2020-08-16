@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Charlotte.Tools;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Charlotte
 {
@@ -57,7 +58,8 @@ namespace Charlotte
 					{
 						_frtwv.send(Utils.toOL(
 							"SEND-TO-CLIENT",
-							Utils.getScreenImage(monitorIndex, quality)
+							Utils.getScreenImage(monitorIndex, quality),
+							""
 							));
 					}
 					else if (command == "MONITOR-INDEX")
@@ -87,6 +89,21 @@ namespace Charlotte
 						{
 							_frtwv.send(Utils.toOL("SHIFT-KEYS-UP"));
 						}
+					}
+					else if (command == "SET-CLIP-BOARD-TEXT")
+					{
+						byte[] bText = StringTools.decodeBase64(prms[c++]);
+						string text = JString.toJString(bText, true, true, true, true);
+
+						Clipboard.SetText(text);
+					}
+					else if (command == "GET-CLIP-BOARD-TEXT")
+					{
+						_frtwv.send(Utils.toOL(
+							"SEND-TO-CLIENT",
+							"",
+							Clipboard.GetText()
+							));
 					}
 					else
 					{

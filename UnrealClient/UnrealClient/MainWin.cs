@@ -745,13 +745,15 @@ namespace Charlotte
 			return
 				droppingDownアプリA ||
 				droppingDown接続C ||
-				droppingDown設定S;
+				droppingDown設定S ||
+				droppingDownクリップボード;
 			// ここへ追加..
 		}
 
 		public bool droppingDownアプリA = false;
 		public bool droppingDown接続C = false;
 		public bool droppingDown設定S = false;
+		public bool droppingDownクリップボード = false;
 		// ここへ追加..
 
 		private void アプリAToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
@@ -790,8 +792,40 @@ namespace Charlotte
 			doNotifyDelay();
 		}
 
+		private void クリップボードToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
+		{
+			droppingDownクリップボード = true;
+			doNotify();
+		}
+
+		private void クリップボードToolStripMenuItem_DropDownClosed(object sender, EventArgs e)
+		{
+			droppingDownクリップボード = false;
+			doNotifyDelay();
+		}
+
 		// ここへ追加..
 
 		// ----
+
+		private void クライアントからサーバーへToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			string text = Clipboard.GetText();
+			byte[] bText = StringTools.ENCODING_SJIS.GetBytes(text);
+			string b64Text = StringTools.toBase64(bText);
+
+			Ground.i.con.sendToSender(
+				"SEND-TO-SERVER",
+				"#-SET-CLIP-BOARD-TEXT " + b64Text
+				);
+		}
+
+		private void サーバーからクライアントへToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Ground.i.con.sendToSender(
+				"SEND-TO-SERVER",
+				"#-GET-CLIP-BOARD-TEXT"
+				);
+		}
 	}
 }

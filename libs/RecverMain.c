@@ -20,7 +20,7 @@ static uint ConnectionHolderThId;
 static int Death;
 static uint SendingIdlingSentCount; // cd
 
-#define RECV_LINE_LENMAX 1000
+#define RECV_LINE_LENMAX   70000000 // 70 MB // 上りクリップボード・テキストのサイズの上限を 50 MB くらいとすると Base64 で 1.333... 倍になって -> 67 MB くらい -> なので 70 MB
 #define SEND_DATA_SIZE_MAX 50000000 // 50 MB
 #define SEND_BUFF_SIZE_MAX 100000000 // 100 MB
 
@@ -59,10 +59,11 @@ static void SendToPlayer(char *command)
 }
 static uint GetRecvLineEndPos(autoBlock_t *recvBuff)
 {
+	uint recvBuffSize = getSize(recvBuff);
 	uint index;
 
-	for(index = 0; index < getSize(recvBuff); index++)
-		if(getByte(recvBuff, index) == '\0')
+	for(index = 0; index < recvBuffSize; index++)
+		if(b_(recvBuff)[index] == '\0')
 			break;
 
 	return index;
@@ -174,13 +175,20 @@ static void PerformTh(int sock, char *strip)
 
 			if(!strcmp(command, "SEND-TO-CLIENT")) // ? クライアント方面へ
 			{
-				autoBlock_t *sendData = (autoBlock_t *)getElement(ol, c++); // HACK: 要素が無ければ error();
+				autoBlock_t *imgData = (autoBlock_t *)getElement(ol, c++); // HACK: 要素が無ければ error();
+				autoBlock_t *cbtxtData;
 
-				if(SEND_DATA_SIZE_MAX < getSize(sendData))
+				cbtxtData = (autoBlock_t *)getElement(ol, c++); // HACK: 要素が無ければ error();
+
+				if(SEND_DATA_SIZE_MAX < getSize(imgData))
 				{
-					cout("Warning: 送信データが大き過ぎます。\n");
+					cout("Warning: 画像データが大き過ぎます。\n");
 				}
-				else if(SEND_BUFF_SIZE_MAX < getSize(sendBuff) + 4 + getSize(sendData))
+				if(SEND_DATA_SIZE_MAX - getSize(imgData) < getSize(cbtxtData))
+				{
+					cout("Warning: 画像・テキストデータが大き過ぎます。\n");
+				}
+				else if(SEND_BUFF_SIZE_MAX < getSize(sendBuff) + 4 + getSize(imgData) + 4 + getSize(cbtxtData))
 				{
 					cout("Warning: 送信バッファが溜まり過ぎている。(SERVER to CLIENT)\n");
 				}
@@ -188,13 +196,19 @@ static void PerformTh(int sock, char *strip)
 				{
 					// クライアント方面へ送信 ...
 
-					// screen image
+					if(getSize(imgData)) // screen Image
 					{
-						ab_addValue(sendBuff, 1 + getSize(sendData));
+						ab_addValue(sendBuff, 1 + getSize(imgData));
 						addByte(sendBuff, 'I');
-						ab_addBytes(sendBuff, sendData);
+						ab_addBytes(sendBuff, imgData);
 					}
-					// mouse cursor
+					if(getSize(cbtxtData)) // clip-Board text
+					{
+						ab_addValue(sendBuff, 1 + getSize(cbtxtData));
+						addByte(sendBuff, 'B');
+						ab_addBytes(sendBuff, cbtxtData);
+					}
+					// mouse Cursor kind
 					{
 						int mouseCursorKind = GetMouseCursorKind();
 

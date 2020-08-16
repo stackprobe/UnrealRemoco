@@ -93,15 +93,25 @@ namespace Charlotte
 							}
 							break;
 
+						case 'B': // clip-Board text
+							{
+								byte[] bText = BinaryTools.getSubBytes(recvData, c, recvData.Length - c);
+								string text = JString.toJString(bText, true, true, true, true);
+
+								Clipboard.SetText(text);
+							}
+							break;
+
 						case 'C': // mouse Cursor kind
 							{
 								Cursor mouseCursor = Consts.mouseCursors[recvData[c++]];
+
 								lastMouseCursor = mouseCursor;
 							}
 							break;
 
 						default:
-							throw null;
+							throw new Exception("不明なコマンド");
 					}
 				}
 				catch (Exception e)
