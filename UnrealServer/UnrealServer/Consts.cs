@@ -65,5 +65,7 @@ namespace Charlotte
 			Cursors.PanWest,
 			Cursors.Hand,
 		};
+
+		public const int CLIPBOARD_TEXT_LEN_MAX = 49000000 / 2; // 49 MB / 2
 	}
 }

@@ -101,8 +101,11 @@ namespace Charlotte
 					{
 						string text = Clipboard.GetText();
 
-						if (text == null)
-							text = "(クリップボードにテキストはありません[S])";
+						if (string.IsNullOrEmpty(text))
+							text = "(サーバーのクリップボードにテキストはありません)";
+
+						if (Consts.CLIPBOARD_TEXT_LEN_MAX < text.Length)
+							text = "(サーバーのクリップボードのテキストは長すぎます)";
 
 						_frtwv.send(Utils.toOL(
 							"SEND-TO-CLIENT",

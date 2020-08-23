@@ -815,8 +815,11 @@ namespace Charlotte
 
 			string text = Clipboard.GetText();
 
-			if (text == null)
-				text = "(クリップボードにテキストはありません[C])";
+			if (string.IsNullOrEmpty(text))
+				text = "(クライアントのクリップボードにテキストはありません)";
+
+			if (Consts.CLIPBOARD_TEXT_LEN_MAX < text.Length)
+				text = "(クライアントのクリップボードにテキストは長すぎます)";
 
 			byte[] bText = StringTools.ENCODING_SJIS.GetBytes(text);
 			string b64Text = StringTools.toBase64(bText);
