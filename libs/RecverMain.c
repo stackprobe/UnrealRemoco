@@ -91,6 +91,9 @@ static void PerformTh(int sock, char *strip)
 	autoBlock_t *sendBuff = newBlock();
 	autoBlock_t *recvBuff = newBlock();
 
+	fixBytes(sendBuff);
+	fixBytes(recvBuff);
+
 	if(!NegotiationServer(sock, EvStop))
 		goto endNegoFault;
 
