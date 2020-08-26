@@ -59,13 +59,13 @@ static void ProcState(KeyInfo_t *i)
 		i->LastState = i->State;
 	}
 }
-static void DoSend(char *command, uint prm, int kbop)
+static void DoSend(char *command, uint prm, int kbop, int force)
 {
 	char *line = xcout("XYCP %d %d %s %u", Mouse_L + Mouse_X - Screen_L, Mouse_T + Mouse_Y - Screen_T, command, prm); // スクリーン範囲外の座標を送るかも！？
 
 	cout("SEND: %s\n", line);
 
-	if(Active && (kbop || MouseActiveOutOfScreen || !MouseOutOfScreen))
+	if(force || Active && (kbop || MouseActiveOutOfScreen || !MouseOutOfScreen))
 	{
 		autoBlock_t *sendData = ab_makeBlockLine(line);
 
@@ -79,11 +79,19 @@ static void DoSend(char *command, uint prm, int kbop)
 }
 static void DoSend_M(char *command, uint prm)
 {
-	DoSend(command, prm, 0);
+	DoSend(command, prm, 0, 0);
+}
+static void DoSend_MF(char *command, uint prm)
+{
+	DoSend(command, prm, 0, 1);
 }
 static void DoSend_K(char *command, uint prm)
 {
-	DoSend(command, prm, 1);
+	DoSend(command, prm, 1, 0);
+}
+static void DoSend_KF(char *command, uint prm)
+{
+	DoSend(command, prm, 1, 1);
 }
 static int IsOutOfScreen(uint mou_x, uint mou_y)
 {
@@ -306,7 +314,7 @@ void RecorderMain(void)
 				if(!i->State)
 				{
 					i->Phase = 0;
-					DoSend_K("UP", vk);
+					DoSend_KF("UP", vk);
 				}
 				break;
 
@@ -385,7 +393,7 @@ void RecorderMain(void)
 				if(!i->State)
 				{
 					i->Phase = 0;
-					DoSend_M("UP", vk);
+					DoSend_MF("UP", vk);
 				}
 				break;
 
