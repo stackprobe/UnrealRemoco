@@ -29,7 +29,7 @@ static uint RecvDataTotalSize;
 static int Death;
 static int Sock;
 
-static void SenderTh(void *prm_dummy)
+static void SenderTh(uint prm_dummy)
 {
 	critical();
 	{
@@ -70,7 +70,7 @@ static void SenderTh(void *prm_dummy)
 
 	Death = 1;
 }
-static void RecverTh(void *prm_dummy)
+static void RecverTh(uint prm_dummy)
 {
 	critical();
 	{
@@ -150,8 +150,8 @@ static int Perform(int sock, uint prm_dummy)
 	{
 		LOGPOS();
 
-		th_s = runThread(SenderTh, NULL);
-		th_r = runThread(RecverTh, NULL);
+		th_s = runThread(SenderTh, 0);
+		th_r = runThread(RecverTh, 0);
 
 		LOGPOS();
 
