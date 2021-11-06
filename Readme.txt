@@ -7,7 +7,7 @@ UnrealRemoco
 ビルド済み配布物
 ----------------
 
-http://stackprobe.dip.jp/UnrealRemoco
+http://stackprobe.ccsp.mydns.jp/UnrealRemoco
 
 
 マニュアル
